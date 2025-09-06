@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Barra baja -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M5,9h3v10H5z" />
+
+    <!-- Barra media -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M10.5,5h3v14h-3z" />
+
+    <!-- Barra alta -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M16,12h3v7h-3z" />
+</vector>

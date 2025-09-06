@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    >
+
+    <!-- Burbuja del chat -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M12,2C6.48,2 2,6.03 2,11c0,2.08 0.84,3.99 2.24,5.52L4,22l5.69,-2.42c0.74,0.2 1.53,0.31 2.31,0.31 5.52,0 10,-4.03 10,-9s-4.48,-9 -10,-9z" />
+
+    <!-- Puntos dentro del chat -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M8,11.5a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0z" />
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M11.5,11.5a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0z" />
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M15,11.5a1.5,1.5 0 1,0 3,0a1.5,1.5 0 1,0 -3,0z" />
+</vector>
