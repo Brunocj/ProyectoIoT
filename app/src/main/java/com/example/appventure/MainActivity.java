@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         btnIniciarSesion = findViewById(R.id.buttonLogin);
 
         btnIniciarSesion.setOnClickListener(v -> {
-            // Aquí valida tus credenciales (Firebase, etc.)
             Intent i = new Intent(MainActivity.this, BlankActivity.class);
+            i.putExtra(BlankActivity.EXTRA_START_DEST, BlankActivity.DEST_HOME);
             startActivity(i);
-            finish(); // evita volver al login con back
+            finish();
         });
     }
 }
