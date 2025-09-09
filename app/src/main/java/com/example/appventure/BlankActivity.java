@@ -2,13 +2,12 @@ package com.example.appventure;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.appventure.Usuario.CalendarFragmentUsuario;
+import com.example.appventure.Usuario.ReservationsFragmentUsuario;
 import com.example.appventure.Usuario.ChatFragmentUsuario;
 import com.example.appventure.Usuario.HomeFragmentUsuario;
 import com.example.appventure.Usuario.ProfileFragmentUsuario;
@@ -41,7 +40,7 @@ public class BlankActivity extends AppCompatActivity {
                 showFragment(ChatFragmentUsuario.class, "chat");
                 return true;
             } else if (id == R.id.nav_calendar) {
-                showFragment(CalendarFragmentUsuario.class, "cal");
+                showFragment(ReservationsFragmentUsuario.class, "cal");
                 return true;
             } else if (id == R.id.nav_profile) {
                 showFragment(ProfileFragmentUsuario.class, "prof");

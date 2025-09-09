@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensajes"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Contenido scrolleable -->
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="8dp">
+
+            <!-- ===== Fila 1 ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp">
+
+                <!-- Avatar -->
+                <ImageView
+                    android:id="@+id/ivAvatar1"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/default_pfp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_circle"
+                    android:clipToOutline="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Hora -->
+                <TextView
+                    android:id="@+id/tvHora1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:12 pm"
+                    android:textColor="#95A1AC"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toTopOf="@id/tvTituloChat1"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <!-- Título del chat -->
+                <TextView
+                    android:id="@+id/tvTituloChat1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tour Machu Picchu – general"
+                    android:textStyle="bold"
+                    android:textSize="15.5sp"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toEndOf="@id/ivAvatar1"
+                    app:layout_constraintEnd_toStartOf="@id/tvHora1"
+                    app:layout_constraintTop_toTopOf="@id/ivAvatar1"
+                    android:layout_marginStart="12dp" />
+
+                <!-- Preview -->
+                <TextView
+                    android:id="@+id/tvPreview1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guía Jefferson: Nos vemos mañana..."
+                    android:textColor="#95A1AC"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/tvTituloChat1"
+                    app:layout_constraintEnd_toStartOf="@id/badge1"
+                    app:layout_constraintTop_toBottomOf="@id/tvTituloChat1"
+                    android:layout_marginTop="2dp"/>
+
+                <!-- Badge rojo -->
+                <FrameLayout
+                    android:id="@+id/badge1"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/badge_red"
+                    android:foregroundGravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPreview1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="3"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"/>
+                </FrameLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="#E8ECEF"
+                    app:layout_constraintTop_toBottomOf="@id/ivAvatar1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== Fila 2 ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp">
+
+                <!-- Avatar -->
+                <ImageView
+                    android:id="@+id/ivAvatar2"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/default_pfp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_circle"
+                    android:clipToOutline="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Hora -->
+                <TextView
+                    android:id="@+id/tvHora2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:28 pm"
+                    android:textColor="#95A1AC"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toTopOf="@id/tvTituloChat2"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <!-- Título del chat -->
+                <TextView
+                    android:id="@+id/tvTituloChat2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guía Jefferson– Machu Picchu"
+                    android:textStyle="bold"
+                    android:textSize="15.5sp"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toEndOf="@id/ivAvatar2"
+                    app:layout_constraintEnd_toStartOf="@id/tvHora2"
+                    app:layout_constraintTop_toTopOf="@id/ivAvatar2"
+                    android:layout_marginStart="12dp" />
+
+                <!-- Preview -->
+                <TextView
+                    android:id="@+id/tvPreview2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tú: Gracias por la aclaración!"
+                    android:textColor="#95A1AC"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/tvTituloChat2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTituloChat2"
+                    android:layout_marginTop="2dp"/>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="#E8ECEF"
+                    app:layout_constraintTop_toBottomOf="@id/ivAvatar2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- margen inferior para respiración -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

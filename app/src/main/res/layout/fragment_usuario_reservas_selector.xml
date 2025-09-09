@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@android:color/white"
+    android:layout_marginTop="20dp">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis reservas"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- ===== Cápsula de fondo (NO interactiva) ===== -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/pillsBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        app:cardCornerRadius="28dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="#F6F6F6">
+
+        <!-- Contenedor real de los chips -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Pill Pendientes -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_pendientes"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pendientes"
+                android:checked="true"
+                android:textColor="@color/chip_text_selector"
+                android:layout_marginEnd="12dp"
+                app:chipBackgroundColor="@color/chip_bg_selector_2"
+                app:chipCornerRadius="24dp"
+                app:chipMinHeight="48dp"
+                app:chipStartPadding="30dp"
+                app:chipEndPadding="30dp"
+                app:chipStrokeWidth="0dp"
+                app:rippleColor="@color/chip_ripple_selector"
+                app:checkedIconVisible="false" />
+
+            <!-- Pill Historial -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_historial"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historial"
+                android:textColor="@color/chip_text_selector"
+                app:chipBackgroundColor="@color/chip_bg_selector_2"
+                app:chipCornerRadius="24dp"
+                app:chipMinHeight="48dp"
+                app:chipStartPadding="30dp"
+                app:chipEndPadding="30dp"
+                app:chipStrokeWidth="0dp"
+                app:rippleColor="@color/chip_ripple_selector"
+                app:checkedIconVisible="false" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <!-- ===== fin cápsula ===== -->
+
+    <!-- Contenido dinámico basado en la selección -->
+    <FrameLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+    </FrameLayout>
+
+</LinearLayout>
