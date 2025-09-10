@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:labelVisibilityMode="unlabeled">
+    android:layout_height="match_parent">
 
-    <!-- Zona de contenido de fragments -->
+    <!-- Contenedor de fragments -->
     <FrameLayout
-        android:id="@+id/content_container"
+        android:id="@+id/content_container_guia"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="#FCFCFF"/>
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+        android:id="@+id/bottom_nav_guia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom_usuario"
+        app:menu="@menu/menu_bottom_guia"
+        android:background="#FCFCFF"
         app:itemIconTint="@color/bottom_nav_icon"
         app:itemTextColor="@color/bottom_nav_icon"
-        app:labelVisibilityMode="unlabeled"
-        />
+        app:labelVisibilityMode="unlabeled"/>
 </LinearLayout>
