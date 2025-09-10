@@ -13,7 +13,7 @@ import com.example.appventure.Usuario.HomeFragmentUsuario;
 import com.example.appventure.Usuario.ProfileFragmentUsuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BlankActivity extends AppCompatActivity {
+public class BlankActivityUsuario extends AppCompatActivity {
 
     public static final String EXTRA_START_DEST = "extra_start_dest";
     public static final String DEST_HOME = "home";
