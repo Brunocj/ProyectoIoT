@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Top bar simple -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/Regresar"
+        android:src="@drawable/ic_back"
+        app:tint="?attr/colorOnBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Caja de búsqueda -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSearch"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="#8A8A8A" />
+
+            <EditText
+                android:id="@+id/edtBuscar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Buscar..."
+                android:imeOptions="actionSearch"
+                android:paddingStart="10dp"
+                android:singleLine="true" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="#E0E0E0" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Chips / Píldoras -->
+    <HorizontalScrollView
+        android:id="@+id/hsChips"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/cardSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/chipsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/chipTodo"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:minWidth="72dp"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                android:text="Todo"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_chip_filled" />
+
+            <TextView
+                android:id="@+id/chipCultural"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:minWidth="72dp"
+                android:includeFontPadding="false"
+                android:gravity="center_vertical"
+                android:text="  Cultural"
+                android:textColor="#475467"
+                android:paddingStart="12dp"
+                android:paddingEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:drawableStart="@drawable/ic_book"
+                android:drawablePadding="6dp"
+                android:background="@drawable/bg_chip_outlined" />
+
+            <TextView
+                android:id="@+id/chipNaturaleza"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:minWidth="72dp"
+                android:includeFontPadding="false"
+                android:gravity="center_vertical"
+                android:text="  Naturaleza"
+                android:textColor="#475467"
+                android:paddingStart="12dp"
+                android:paddingEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:drawableStart="@drawable/ic_leaf"
+                android:drawablePadding="6dp"
+                android:background="@drawable/bg_chip_outlined" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Contenedor para cargar el fragment de resultados -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentResultados"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/hsChips"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:name="com.tuapp.ui.ResultadosFragment" />
+    <!-- tools:name es solo para preview; cambia por tu paquete -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
