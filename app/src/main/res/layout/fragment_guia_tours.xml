@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#FCFCFF"
+    android:layout_marginTop="20dp"
+    tools:context=".Guia.ToursFragmentGuia">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis tours"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- ===== Cápsula de chips ===== -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        app:cardCornerRadius="28dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="#F6F6F6">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Pill Próximos -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_proximos"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Próximos"
+                android:checked="true"
+                android:textColor="@color/chip_text_selector"
+                android:layout_marginEnd="12dp"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/chip_bg_selector_2"
+                app:chipCornerRadius="24dp"
+                app:chipMinHeight="44dp"
+                app:chipStartPadding="16dp"
+                app:chipEndPadding="16dp"
+                app:chipStrokeWidth="0dp"
+                app:rippleColor="@color/chip_ripple_selector"
+                app:checkedIconVisible="false" />
+
+            <!-- Pill En curso -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_en_curso"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En curso"
+                android:textColor="@color/chip_text_selector"
+                android:layout_marginEnd="12dp"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/chip_bg_selector_2"
+                app:chipCornerRadius="24dp"
+                app:chipMinHeight="44dp"
+                app:chipStartPadding="16dp"
+                app:chipEndPadding="16dp"
+                app:chipStrokeWidth="0dp"
+                app:rippleColor="@color/chip_ripple_selector"
+                app:checkedIconVisible="false" />
+
+            <!-- Pill Finalizados -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_finalizados"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Finalizados"
+                android:textColor="@color/chip_text_selector"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/chip_bg_selector_2"
+                app:chipCornerRadius="24dp"
+                app:chipMinHeight="44dp"
+                app:chipStartPadding="16dp"
+                app:chipEndPadding="16dp"
+                app:chipStrokeWidth="0dp"
+                app:rippleColor="@color/chip_ripple_selector"
+                app:checkedIconVisible="false" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Contenedor dinámico -->
+    <FrameLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

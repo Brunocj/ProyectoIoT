@@ -1,4 +1,5 @@
 package com.example.appventure.Guia;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ChatFragmentUsuario extends Fragment {
+import com.example.appventure.R;
+
+public class ToursFinalizadosFragment extends Fragment {
+
+    public ToursFinalizadosFragment() {}
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = new View(requireContext());
-        v.setBackgroundColor(0x006970);
-        return v;
+        return inflater.inflate(R.layout.fragment_tours_finalizados, container, false);
     }
 }

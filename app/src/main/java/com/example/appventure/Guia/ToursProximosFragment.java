@@ -11,15 +11,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
 
-public class ProfileFragmentGuia extends Fragment {
+public class ToursProximosFragment extends Fragment {
 
-    public ProfileFragmentGuia() {}
+    public ToursProximosFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guia_profile, container, false);
+        return inflater.inflate(R.layout.fragment_tours_proximos, container, false);
     }
 }

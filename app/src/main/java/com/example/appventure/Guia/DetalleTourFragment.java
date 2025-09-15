@@ -11,15 +11,25 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
 
-public class ProfileFragmentGuia extends Fragment {
+public class DetalleTourFragment extends Fragment {
 
-    public ProfileFragmentGuia() {}
+    private String tourId, tourName;
+
+    public DetalleTourFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guia_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_detalle_tour, container, false);
+
+        if (getArguments() != null) {
+            tourId = getArguments().getString("tourId");
+            tourName = getArguments().getString("tourName");
+        }
+
+        // Aquí podrías setear tourName en un TextView
+        return view;
     }
 }

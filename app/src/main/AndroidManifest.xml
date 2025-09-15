@@ -22,6 +22,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".BlankActivityUsuario"  />
+        <activity android:name=".BlankActivityGuia" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCCGlNqaHAnwEGX1uiwrAiIjRzeVPNFSdI"/>
+
         <activity android:name=".Usuario.ActivityUsuarioMetodosPago"/>
         <activity android:name=".Usuario.ActivityUsuarioNotiConf"/>
         <activity android:name=".Usuario.ActivityUsuarioAyuda"/>
