@@ -39,6 +39,8 @@
             android:name=".Guia.ActivityGuiaInfoPersonal"
             android:exported="false" />
 
+        <activity android:name=".Guia.ChatDetalleGuiaActivity"
+            android:exported="false"/>
 
     </application>
 
