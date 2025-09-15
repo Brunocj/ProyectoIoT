@@ -9,7 +9,7 @@
         android:pathData="M20,60 Q70,70 100,45 Q130,30 150,20 Q180,15 200,25 Q230,35 250,42 Q270,45 280,42"
         android:strokeColor="#007AFF"
         android:strokeWidth="2"
-        android:fillColor="none"
+        android:fillColor="@android:color/transparent"
         android:strokeLineCap="round"
         android:strokeLineJoin="round" />
 
