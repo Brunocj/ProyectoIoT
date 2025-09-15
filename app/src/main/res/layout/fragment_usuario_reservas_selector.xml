@@ -11,6 +11,7 @@
 
     <!-- Título -->
     <TextView
+        android:id="@+id/tvTituloMisReservas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mis reservas"
@@ -37,12 +38,14 @@
         app:strokeWidth="0dp"
         app:cardBackgroundColor="#F6F6F6">
 
-        <!-- Contenedor real de los chips -->
-        <LinearLayout
+        <!-- ChipGroup: selección única -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupReservas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:singleLine="true">
 
             <!-- Pill Pendientes -->
             <com.google.android.material.chip.Chip
@@ -79,7 +82,7 @@
                 app:chipStrokeWidth="0dp"
                 app:rippleColor="@color/chip_ripple_selector"
                 app:checkedIconVisible="false" />
-        </LinearLayout>
+        </com.google.android.material.chip.ChipGroup>
     </com.google.android.material.card.MaterialCardView>
     <!-- ===== fin cápsula ===== -->
 
@@ -88,9 +91,5 @@
         android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-
-    </FrameLayout>
-
+        android:layout_weight="1" />
 </LinearLayout>

@@ -323,7 +323,7 @@
                 android:paddingBottom="12dp"
                 android:background="#FFFFFF"
                 android:paddingHorizontal="16dp"
-                android:elevation="4dp">
+                android:elevation="0.5dp">
 
                 <ImageView
                     android:layout_width="72dp"

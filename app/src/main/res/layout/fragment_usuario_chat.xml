@@ -41,6 +41,7 @@
 
             <!-- ===== Fila 1 ===== -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/itemChat1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp">

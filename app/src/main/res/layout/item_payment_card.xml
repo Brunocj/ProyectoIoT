@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <!-- Selector a la izquierda -->
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/rbSelect"
+        android:layout_width="29dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@id/cardRoot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardRoot"
+        app:useMaterialThemeColors="true" />
+
+    <!-- Tarjeta -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRoot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toEndOf="@id/rbSelect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="86:54">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Fondo gradiente -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_payment_card"/>
+
+            <!-- Arcos suaves -->
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:layout_gravity="end|top"
+                android:translationY="-24dp"
+                android:translationX="36dp"
+                android:alpha="0.22"
+                android:src="@drawable/shape_card_circle_soft"/>
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="end|bottom"
+                android:translationX="8dp"
+                android:translationY="6dp"
+                android:alpha="0.26"
+                android:src="@drawable/shape_card_circle_soft"/>
+
+            <!-- Contenido de la tarjeta -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/imgBrand"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_card_brand"
+                        app:tint="@android:color/white"
+                        android:contentDescription="@string/app_name"/>
+
+                    <TextView
+                        android:id="@+id/tvBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="ChachaCard"
+                        android:textColor="#E6FFFFFF"
+                        android:textSize="18sp"
+                        android:letterSpacing="0.02"
+                        android:includeFontPadding="false"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvMaskedNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="•••• – •••• – •••• – 9432"
+                    android:textColor="@android:color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.02"
+                    android:includeFontPadding="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre del titular"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="13sp"
+                            android:includeFontPadding="false"/>
+
+                        <TextView
+                            android:id="@+id/tvCardholder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jefferson Villegas"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:includeFontPadding="false"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end|bottom">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vence"
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="13sp"
+                            android:gravity="end"
+                            android:includeFontPadding="false"/>
+
+                        <TextView
+                            android:id="@+id/tvExp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12/24"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:gravity="end"
+                            android:includeFontPadding="false"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

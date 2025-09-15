@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="10dp"
+    android:layout_marginTop="20dp">
+    <!--tools:context=".ui.chat.ChatUsuarioActivity"-->
+
+    <!-- Toolbar (solo icono back) -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarChat"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:navigationIcon="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Título como TextView centrado -->
+    <TextView
+        android:id="@+id/tvTituloChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#111827"
+        app:layout_constraintTop_toTopOf="@id/toolbarChat"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarChat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- CONTENIDO DE MENSAJES (estáticos para demo) -->
+    <ScrollView
+        android:id="@+id/scrollMensajes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarChat"
+        app:layout_constraintBottom_toTopOf="@id/inputContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- MENSAJE SALIENTE 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/msgOut1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_bubble_outgoing"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Buenas noches, ¿cuánto tiempo de tolerancia habrá para la partida del tren?"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:maxWidth="280dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:15 AM"
+                    android:textSize="11sp"
+                    android:textColor="#98A2B3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="✓✓"
+                    android:textSize="11sp"
+                    android:textColor="#98A2B3"/>
+            </LinearLayout>
+
+            <!-- MENSAJE ENTRANTE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/msgIn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_bubble_incoming"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Hola Bruno, el tiempo de tolerancia que manejamos es de 10 minutos"
+                    android:textColor="#111827"
+                    android:textSize="14sp"
+                    android:maxWidth="280dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="10:30 AM"
+                android:textSize="11sp"
+                android:textColor="#98A2B3" />
+
+            <!-- MENSAJE SALIENTE 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/msgOut2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_bubble_outgoing"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Gracias por la aclaración"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:maxWidth="280dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:35 AM"
+                    android:textSize="11sp"
+                    android:textColor="#98A2B3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="✓✓"
+                    android:textSize="11sp"
+                    android:textColor="#98A2B3"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Caja de entrada + botón enviar -->
+    <FrameLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardInput"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardElevation="0dp"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="28dp">
+
+            <EditText
+                android:id="@+id/edtMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="Escribe un mensaje"
+                android:textColor="#111827"
+                android:textColorHint="#9CA3AF"
+                android:paddingStart="16dp"
+                android:paddingEnd="72dp"
+                android:maxLines="4"
+                android:inputType="textCapSentences|textMultiLine" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnEnviar"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:contentDescription="@string/enviar"
+
+            android:elevation="0dp"
+            android:stateListAnimator="@null"
+            android:translationZ="0dp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:borderWidth="0dp"
+
+            app:maxImageSize="25dp"
+
+            app:srcCompat="@drawable/ic_send"
+            app:tint="@android:color/white"
+            app:useCompatPadding="false" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    <!-- Lista de mensajes cuando se implemente
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMensajes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="90dp"
+    app:layout_constraintTop_toBottomOf="@id/headerContacto"
+    app:layout_constraintBottom_toTopOf="@+id/inputContainer"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:listitem="@layout/item_mensaje_salida"
+    tools:itemCount="8" />-->
+

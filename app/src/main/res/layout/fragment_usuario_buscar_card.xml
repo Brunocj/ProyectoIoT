@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintDimensionRatio="16:9"
-            tools:src="@drawable/machu_picchu" />
+            android:src="@drawable/machu_picchu" />
 
         <!-- Título -->
         <TextView
@@ -91,7 +91,7 @@
                 android:id="@+id/icUbicacion"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:tint="#8A8A8A"
+                app:tint="#8A8A8A"
                 android:src="@drawable/ic_location" />
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star"
-                android:tint="#FFC107"/>
+                app:tint="#FFC107"/>
 
             <TextView
                 android:id="@+id/txtRatingBottom"
