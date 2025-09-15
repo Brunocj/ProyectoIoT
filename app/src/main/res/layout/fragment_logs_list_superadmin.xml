@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Atrás"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Logs del sistema"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"/>
+    </LinearLayout>
+
+    <!-- Buscador -->
+    <EditText
+        android:id="@+id/edtBuscarLog"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_ed"
+        android:hint="Buscar logs..."
+        android:paddingHorizontal="12dp"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        android:singleLine="true"/>
+
+    <!-- Chips de filtro -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/chipTodo"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Todo"
+                android:textStyle="bold"
+                android:background="@drawable/bg_chip_filled"
+                android:textColor="@android:color/white"/>
+
+            <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/chipUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Usuario"
+                android:background="@drawable/bg_chip_outline"
+                android:textColor="@color/text_primary"/>
+
+            <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/chipGuia"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Guía"
+                android:background="@drawable/bg_chip_outline"
+                android:textColor="@color/text_primary"/>
+
+            <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+            <TextView
+                android:id="@+id/chipAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Administrador"
+                android:background="@drawable/bg_chip_outline"
+                android:textColor="@color/text_primary"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Recycler -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLogs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"/>
+</LinearLayout>

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //            finish();
 
 
-            Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
+            Intent i = new Intent(MainActivity.this, BlankActivitySuperadmin.class);
             startActivity(i);
             finish();
 

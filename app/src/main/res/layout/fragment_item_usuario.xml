@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Foto del usuario -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_usuario"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/default_pfp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/inactive"/>
+
+        <!-- Información del usuario -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_nombre_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sideral Carrión"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <!-- Chip de rol -->
+                <TextView
+                    android:id="@+id/chip_rol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guía"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/chip_background"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <!-- Chip de estado -->
+                <TextView
+                    android:id="@+id/chip_estado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activo"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/chip_activo_background"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Menú de opciones -->
+        <ImageView
+            android:id="@+id/btn_menu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_more_vert"
+            android:contentDescription="Más opciones"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
