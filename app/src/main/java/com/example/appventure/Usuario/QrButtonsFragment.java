@@ -15,7 +15,7 @@ public class QrButtonsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Layout: fragment_usuario_qr_btn.xml (botones ya vienen deshabilitados)
+        // Layout: fragment_usuario_qr_btn.xml (botones vienen deshabilitados)
         return inflater.inflate(R.layout.fragment_usuario_qr_btn, container, false);
     }
 }
