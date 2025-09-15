@@ -7,22 +7,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.cardview.widget.CardView;
-import android.widget.TextView;
-
 import com.example.appventure.R;
 
-public class HomeFragmentAdminEmpresa extends Fragment {
-
+public class FragmentAdminProfile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Infla el layout CORRECTO: fragment_admin_dashboard
-        return inflater.inflate(R.layout.fragment_admin_dashboard, container, false);
+        return inflater.inflate(R.layout.fragment_admin_profile, container, false);
     }
-
-
-
 }
