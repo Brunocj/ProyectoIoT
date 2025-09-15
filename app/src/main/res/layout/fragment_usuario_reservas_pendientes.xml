@@ -9,6 +9,7 @@
 
     <!-- Card de reserva pendiente -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardReservaPendiente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"

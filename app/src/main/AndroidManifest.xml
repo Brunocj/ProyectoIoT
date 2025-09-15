@@ -22,6 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".BlankActivityUsuario"  />
+        <activity android:name=".Usuario.ActivityUsuarioMetodosPago"/>
+        <activity android:name=".Usuario.ActivityUsuarioNotiConf"/>
+        <activity android:name=".Usuario.ActivityUsuarioAyuda"/>
+        <activity android:name=".Usuario.ActivityUsuarioInfoPersonal"/>
+        <activity
+            android:name=".Usuario.ChatActivityUsuario"
+            android:exported="false" />
+
     </application>
 
 </manifest>

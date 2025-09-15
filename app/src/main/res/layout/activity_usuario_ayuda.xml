@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_marginTop="20dp"
+    android:padding="10dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarAyuda"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/white"
+        app:titleCentered="true"
+        app:navigationIconTint="@android:color/black"
+        app:navigationIcon="@drawable/ic_back">
+
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Centro de ayuda"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center" />
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginTop="56dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Sección de contacto -->
+            <TextView
+                android:id="@+id/tvNecesitasAyuda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Necesitas Ayuda?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tvLineaCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:lineSpacingExtra="2dp"/>
+
+            <!-- Título FAQs -->
+            <TextView
+                android:id="@+id/tvPreguntasFrecuentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preguntas frecuentes"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="24dp"/>
+
+            <!-- FAQ 1 -->
+            <LinearLayout
+                android:id="@+id/faq1Item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="¿Cómo se realizan los cobros?"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/faq1Chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:rotation="0"
+                    android:src="@drawable/ic_chevron_down"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/faq1Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="El pago se realiza de manera automática una vez finalizado el tour."
+                android:textSize="14sp"
+                android:textColor="#99000000"
+                android:lineSpacingExtra="2dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1F000000"/>
+
+            <!-- FAQ 2 -->
+            <LinearLayout
+                android:id="@+id/faq2Item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="¿Cómo cambio mi método de pago?"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/faq2Chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:rotation="0"
+                    android:src="@drawable/ic_chevron_down"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/faq2Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Desde Perfil → Métodos de Pago, agrega una nueva tarjeta o selecciona una existente como predeterminada."
+                android:textSize="14sp"
+                android:textColor="#99000000"
+                android:lineSpacingExtra="2dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1F000000"/>
+
+            <!-- FAQ 3 -->
+            <LinearLayout
+                android:id="@+id/faq3Item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="¿Puedo cancelar o reprogramar un tour?"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/faq3Chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:rotation="0"
+                    android:src="@drawable/ic_chevron_down"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/faq3Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Puedes cancelar o reprogramar desde Mis reservas. Las políticas pueden variar según el proveedor."
+                android:textSize="14sp"
+                android:textColor="#99000000"
+                android:lineSpacingExtra="2dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1F000000"/>
+
+            <!-- FAQ 4 -->
+            <LinearLayout
+                android:id="@+id/faq4Item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="¿Cómo contacto al soporte?"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/faq4Chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:rotation="0"
+                    android:src="@drawable/ic_chevron_down"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/faq4Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escríbenos desde la sección anterior o usa el botón de ayuda en la pantalla del tour."
+                android:textSize="14sp"
+                android:textColor="#99000000"
+                android:lineSpacingExtra="2dp"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

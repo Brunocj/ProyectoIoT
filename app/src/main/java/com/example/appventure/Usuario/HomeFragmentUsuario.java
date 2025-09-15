@@ -30,12 +30,10 @@ public class HomeFragmentUsuario extends Fragment {
 
         TextView verTodo = view.findViewById(R.id.tvVerTodo);
         verTodo.setOnClickListener(v -> {
-            Fragment buscar = new BuscarFragmentUsuario();
-            requireActivity()
-                    .getSupportFragmentManager()
+            getParentFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.content_container, buscar)   // host del activity
-                    .addToBackStack("buscar")                  // para volver con back
+                    .replace(R.id.content_container, new BuscarFragment()) // o tu clase BuscarFragmentUsuario
+                    .addToBackStack("HOME_STACK")
                     .commit();
         });
     }
