@@ -199,19 +199,19 @@
                 android:textColor="@color/teal_primary"
                 android:textSize="12sp" />
 
+            <!-- Register Link -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:elevation="2dp"
                 android:text="Iniciar Sesión"
-                android:textSize="13sp"
                 android:textColor="@color/white"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/primary"
-                app:cornerRadius="12dp"
-                android:elevation="2dp" />
+                app:cornerRadius="12dp" />
 
-            <!-- Register Link -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
