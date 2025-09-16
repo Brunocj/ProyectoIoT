@@ -37,7 +37,7 @@ public class BlankActivitySuperadmin extends AppCompatActivity {
             showProfileMenu(v);
         });
 
-        // 👉 Esto va dentro de onCreate, no afuera
+        // 👉 Esto va dentro de onCreate, no afuer
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_container, new HomeFragmentSuperadmin())
