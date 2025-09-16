@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -24,6 +23,25 @@
         </activity>
         <activity android:name=".BlankActivityUsuario" />
         <activity android:name=".BlankActivityGuia" />
+        <activity android:name=".BlankActivityAdminEmpresa" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCCGlNqaHAnwEGX1uiwrAiIjRzeVPNFSdI"/>
+
+        <activity android:name=".Usuario.ActivityUsuarioMetodosPago"/>
+        <activity android:name=".Usuario.ActivityUsuarioNotiConf"/>
+        <activity android:name=".Usuario.ActivityUsuarioAyuda"/>
+        <activity android:name=".Usuario.ActivityUsuarioInfoPersonal"/>
+        <activity
+            android:name=".Usuario.ChatActivityUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".Guia.ActivityGuiaInfoPersonal"
+            android:exported="false" />
+
+        <activity android:name=".Guia.ChatDetalleGuiaActivity"
+            android:exported="false"/>
+
         <activity android:name=".BlankActivitySuperadmin" />
     </application>
 
