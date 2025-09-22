@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:labelVisibilityMode="unlabeled">
 
     <!-- Zona de contenido de fragments -->
     <FrameLayout
@@ -12,48 +13,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- Bottom Navigation Custom -->
-    <LinearLayout
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:elevation="8dp"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp">
-
-        <!-- Home Icon -->
-        <ImageView
-            android:id="@+id/nav_home"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_home"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="center"
-            android:contentDescription="Home"
-            android:padding="12dp"
-            app:tint="#006970" />
-
-        <!-- Espacio flexible -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"/>
-
-        <!-- Profile Icon -->
-        <ImageView
-            android:id="@+id/nav_profile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Profile"
-            android:padding="12dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_profile"
-            app:tint="#006970" />
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bottom_usuario"
+        app:itemIconTint="@color/bottom_nav_icon"
+        app:itemTextColor="@color/bottom_nav_icon"
+        app:labelVisibilityMode="unlabeled"
+        />
 </LinearLayout>

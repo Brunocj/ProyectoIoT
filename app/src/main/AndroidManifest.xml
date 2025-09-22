@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BlankActivityUsuario" />
+        <activity android:name=".BlankActivityUsuario"  />
         <activity android:name=".BlankActivityGuia" />
         <activity android:name=".BlankActivityAdminEmpresa" />
         <meta-data
@@ -42,7 +42,6 @@
         <activity android:name=".Guia.ChatDetalleGuiaActivity"
             android:exported="false"/>
 
-        <activity android:name=".BlankActivitySuperadmin" />
     </application>
 
 </manifest>

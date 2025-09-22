@@ -13,8 +13,4 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="BottomNavigationSpread" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemHorizontalTranslationEnabled">false</item>
-    </style>
-
 </resources>
