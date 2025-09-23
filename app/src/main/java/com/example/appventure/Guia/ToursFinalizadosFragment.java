@@ -20,6 +20,6 @@ public class ToursFinalizadosFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tours_finalizados, container, false);
+        return inflater.inflate(R.layout.fragment_guia_tours_finalizados, container, false);
     }
 }

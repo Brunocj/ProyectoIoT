@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.AdminEmpresa;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
 
-public class ToursEnCursoFragment extends Fragment {
-
-    public ToursEnCursoFragment() {}
+public class FragmentAdminMapaCompleto extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guia_tours_en_curso, container, false);
+        // Inflar el layout del mapa completo
+        return inflater.inflate(R.layout.fragment_admin_mapa_completo, container, false);
     }
 }

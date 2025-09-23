@@ -1,25 +1,20 @@
-package com.example.appventure.Guia;
+package com.example.appventure.AdminEmpresa;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.appventure.R;
 
-public class ToursEnCursoFragment extends Fragment {
-
-    public ToursEnCursoFragment() {}
-
+public class FragmentAdminProfile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guia_tours_en_curso, container, false);
+        return inflater.inflate(R.layout.fragment_admin_profile, container, false);
     }
 }

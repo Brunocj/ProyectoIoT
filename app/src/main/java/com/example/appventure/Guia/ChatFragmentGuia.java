@@ -1,5 +1,6 @@
 package com.example.appventure.Guia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -65,6 +66,11 @@ public class ChatFragmentGuia extends Fragment {
         // Estado inicial
         seleccionarChip(true);
         aplicarFiltros();
+
+        binding.item1.setOnClickListener(v ->
+                startActivity(new Intent(requireContext(), ChatDetalleGuiaActivity.class))
+        );
+
 
         return binding.getRoot();
     }

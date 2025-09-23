@@ -37,6 +37,12 @@
         <activity
             android:name=".Usuario.ActivityChatUsuario"
             android:exported="false" />
+        <activity
+            android:name=".Guia.ActivityGuiaInfoPersonal"
+            android:exported="false" />
+
+        <activity android:name=".Guia.ChatDetalleGuiaActivity"
+            android:exported="false"/>
         <activity android:name=".Usuario.ActivityUsuarioDetalleTour"/>
 
     </application>
