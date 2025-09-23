@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

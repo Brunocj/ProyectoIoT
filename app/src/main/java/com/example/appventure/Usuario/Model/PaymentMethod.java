@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Model;
 
 import androidx.annotation.NonNull;
 //ESTO ES UN MODEL, LUEGO HAY QUE MOVERLO

@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
+import com.example.appventure.Usuario.ActivityChatUsuario;
 
 public class ChatFragmentUsuario extends Fragment {
 
@@ -28,7 +29,7 @@ public class ChatFragmentUsuario extends Fragment {
         View item1 = view.findViewById(R.id.itemChat1);
         if (item1 != null) {
             item1.setOnClickListener(v -> {
-                Intent i = new Intent(requireContext(), ChatActivityUsuario.class);
+                Intent i = new Intent(requireContext(), ActivityChatUsuario.class);
                 // (Opcional) pasa datos del chat
                 i.putExtra("chatTitle", "Tour Machu Picchu – general");
                 startActivity(i);

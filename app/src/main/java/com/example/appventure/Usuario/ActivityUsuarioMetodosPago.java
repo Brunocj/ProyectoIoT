@@ -1,5 +1,6 @@
 package com.example.appventure.Usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appventure.AddCardActivity;
 import com.example.appventure.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.card.MaterialCardView;
@@ -41,7 +43,8 @@ public class ActivityUsuarioMetodosPago extends AppCompatActivity {
         }
         toolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.action_add_card) {
-                Toast.makeText(this, "Agregar tarjeta", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, AddCardActivity.class);
+                startActivity(i);
                 return true;
             } else if (item.getItemId() == R.id.action_help) {
                 Toast.makeText(this, "Ayuda de pagos", Toast.LENGTH_SHORT).show();

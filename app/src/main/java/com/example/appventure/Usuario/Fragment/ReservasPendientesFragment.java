@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,22 +7,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
 
+public class ReservasPendientesFragment extends Fragment {
 
-public class ReservasHistorialFragment extends Fragment {
-
-    public ReservasHistorialFragment() { }
+    public ReservasPendientesFragment() { }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_usuario_reservas_historial, container, false);
+        return inflater.inflate(R.layout.fragment_usuario_reservas_pendientes, container, false);
     }
 
     @Override
@@ -30,15 +28,15 @@ public class ReservasHistorialFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Usa la card si existe; si no, toda la vista como botón para la demo estática
-        View clickTarget = view.findViewById(R.id.cardReservaHistorial);
-        if (clickTarget == null) return;
+        View clickTarget = view.findViewById(R.id.cardReservaPendiente);
+        if (clickTarget == null) clickTarget = view;
 
         clickTarget.setOnClickListener(v -> {
             Fragment parent = getParentFragment();
             if (parent instanceof ReservationsFragmentUsuario) {
-                // Demo estática: actionMode="RATE" -> Detalle con CalificarExperiencia
+                // Demo estática: actionMode="QR" -> Detalle con botones de QR
                 ((ReservationsFragmentUsuario) parent)
-                        .openDetalleFullScreen("RATE", "ID_DEMO");
+                        .openDetalleFullScreen("QR", "ID_DEMO");
             }
         });
     }

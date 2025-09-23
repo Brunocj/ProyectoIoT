@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FCFCFF"
-    android:layout_marginTop="10dp"
     android:padding="10dp">
 
     <!-- Título -->
@@ -195,9 +194,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- margen inferior para respiración -->
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="12dp" />
 
         </LinearLayout>
     </ScrollView>

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appventure.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class ChatActivityUsuario extends AppCompatActivity {
+public class ActivityChatUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

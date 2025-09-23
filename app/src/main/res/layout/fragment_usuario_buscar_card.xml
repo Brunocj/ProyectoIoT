@@ -10,6 +10,8 @@
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp"
+    android:clickable="true"
+    android:focusable="true"
     app:cardBackgroundColor="#FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.appventure.Usuario.ReservationsFragmentUsuario;
-import com.example.appventure.Usuario.ChatFragmentUsuario;
-import com.example.appventure.Usuario.HomeFragmentUsuario;
-import com.example.appventure.Usuario.ProfileFragmentUsuario;
+import com.example.appventure.Usuario.Fragment.ReservationsFragmentUsuario;
+import com.example.appventure.Usuario.Fragment.ChatFragmentUsuario;
+import com.example.appventure.Usuario.Fragment.HomeFragmentUsuario;
+import com.example.appventure.Usuario.Fragment.ProfileFragmentUsuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BlankActivityUsuario extends AppCompatActivity {

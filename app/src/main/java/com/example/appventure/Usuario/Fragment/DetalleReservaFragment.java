@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.appventure.R;
 import com.google.android.material.appbar.MaterialToolbar;

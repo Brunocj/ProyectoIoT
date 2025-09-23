@@ -1,0 +1,6 @@
+<resources>
+    <array name="price_default_values">
+        <item>50</item>
+        <item>300</item>
+    </array>
+</resources>

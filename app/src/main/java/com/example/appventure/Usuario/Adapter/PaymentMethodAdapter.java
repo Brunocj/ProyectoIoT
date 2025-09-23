@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appventure.R;
+import com.example.appventure.Usuario.Model.PaymentMethod;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 

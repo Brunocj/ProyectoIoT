@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //            finish();
 
 
-            Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
+            Intent i = new Intent(MainActivity.this, BlankActivityUsuario.class);
             startActivity(i);
             finish();
 

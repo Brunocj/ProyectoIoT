@@ -1,4 +1,4 @@
-package com.example.appventure.Usuario;
+package com.example.appventure.Usuario.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
+import com.example.appventure.Usuario.ActivityUsuarioAyuda;
+import com.example.appventure.Usuario.ActivityUsuarioInfoPersonal;
+import com.example.appventure.Usuario.ActivityUsuarioMetodosPago;
+import com.example.appventure.Usuario.ActivityUsuarioNotiConf;
 
 public class ProfileFragmentUsuario extends Fragment {
 
