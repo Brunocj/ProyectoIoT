@@ -44,7 +44,7 @@
             android:stepSize="10"
             app:values="@array/price_default_values"/>
 
-        <!-- Rango en texto (tu .java lo actualiza) -->
+        <!-- Rango en texto  -->
         <TextView
             android:id="@+id/tvRangoPrecio"
             android:layout_width="match_parent"
