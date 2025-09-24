@@ -38,10 +38,10 @@
             android:name=".Usuario.ActivityChatUsuario"
             android:exported="false" />
         <activity
-            android:name=".Guia.ActivityGuiaInfoPersonal"
+            android:name=".Guia.activities.ActivityGuiaInfoPersonal"
             android:exported="false" />
 
-        <activity android:name=".Guia.ChatDetalleGuiaActivity"
+        <activity android:name=".Guia.activities.ChatDetalleGuiaActivity"
             android:exported="false"/>
         <activity android:name=".Usuario.ActivityUsuarioDetalleTour"/>
         <activity android:name=".Usuario.ActivityUsuarioPago"/>

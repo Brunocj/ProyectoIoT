@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.Guia.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

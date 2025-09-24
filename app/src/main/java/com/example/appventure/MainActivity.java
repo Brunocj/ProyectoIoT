@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 //            Intent i = new Intent(MainActivity.this, BlankActivityAdminEmpresa.class);
 //            startActivity(i);
-//            finish();
+//            finish();z
 //
  //             Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
 //            startActivity(i);

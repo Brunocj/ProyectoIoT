@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.Guia.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,16 +10,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.appventure.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
-public class ToursEnCursoFragment extends Fragment {
+public class GananciasFragment extends Fragment {
 
-    public ToursEnCursoFragment() {}
+    public GananciasFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_guia_tours_en_curso, container, false);
+        View view = inflater.inflate(R.layout.fragment_ganancias, container, false);
+
+        // Flecha atrás
+        MaterialToolbar toolbar = view.findViewById(R.id.toolbarGanancias);
+        toolbar.setNavigationOnClickListener(v -> requireActivity().onBackPressed());
+
+        return view;
     }
 }
