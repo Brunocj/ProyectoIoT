@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.Guia.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.appventure.Guia.activities.ActivityGuiaInfoPersonal;
 import com.example.appventure.R;
 
 public class ProfileFragmentGuia extends Fragment {

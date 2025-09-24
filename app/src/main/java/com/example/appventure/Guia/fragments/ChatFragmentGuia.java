@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.Guia.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.appventure.Guia.activities.ChatDetalleGuiaActivity;
 import com.example.appventure.R;
 import com.example.appventure.databinding.FragmentGuiaChatBinding;
 

@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.appventure.Guia.HomeFragmentGuia;
-import com.example.appventure.Guia.ChatFragmentGuia;
-import com.example.appventure.Guia.ToursFragmentGuia;
-import com.example.appventure.Guia.ProfileFragmentGuia;
+import com.example.appventure.Guia.fragments.HomeFragmentGuia;
+import com.example.appventure.Guia.fragments.ChatFragmentGuia;
+import com.example.appventure.Guia.fragments.ToursFragmentGuia;
+import com.example.appventure.Guia.fragments.ProfileFragmentGuia;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BlankActivityGuia extends AppCompatActivity {
@@ -52,27 +52,19 @@ public class BlankActivityGuia extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tx = fm.beginTransaction();
 
-        Fragment fHome = fm.findFragmentByTag("home_guia");
-        Fragment fChat = fm.findFragmentByTag("chat_guia");
-        Fragment fTours = fm.findFragmentByTag("tours_guia");
-        Fragment fProfile = fm.findFragmentByTag("profile_guia");
+        // 🔑 Limpia la pila cada vez que cambias de tab
+        fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-        if (fHome != null) tx.hide(fHome);
-        if (fChat != null) tx.hide(fChat);
-        if (fTours != null) tx.hide(fTours);
-        if (fProfile != null) tx.hide(fProfile);
-
-        Fragment target = fm.findFragmentByTag(tag);
-        if (target == null) {
-            try {
-                target = clazz.getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            tx.add(R.id.content_container_guia, target, tag);
-        } else {
-            tx.show(target);
+        Fragment target;
+        try {
+            target = clazz.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
+        // 🔄 Usamos replace en vez de hide/show
+        tx.replace(R.id.content_container_guia, target, tag);
         tx.commit();
     }
+
 }

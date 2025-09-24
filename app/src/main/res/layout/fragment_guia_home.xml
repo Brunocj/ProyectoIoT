@@ -152,6 +152,39 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
+    <!-- Encabezado fijo de ofertas -->
+    <LinearLayout
+        android:id="@+id/headerOfertas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtOfertas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ofertas disponibles"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#101828" />
+
+        <TextView
+            android:id="@+id/txtVerMas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver más"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#0B6B61"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+
     <!-- Scroll SOLO para las ofertas -->
     <ScrollView
         android:layout_width="match_parent"
@@ -161,18 +194,18 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Ofertas disponibles"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#101828" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Ofertas disponibles"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="#101828" />-->
 
             <!-- Aquí van los 4 cards de ofertas (como los que ya hiciste) -->
             <!-- Card de oferta 1, 2, 3, 4 ... -->

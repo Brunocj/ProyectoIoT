@@ -1,4 +1,4 @@
-package com.example.appventure.Guia;
+package com.example.appventure.Guia.activities;
 
 import android.os.Bundle;
 
