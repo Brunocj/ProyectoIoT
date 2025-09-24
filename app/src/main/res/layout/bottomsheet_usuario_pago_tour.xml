@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvTituloSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Método de pago"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/black" />
+
+        <!-- Contenedor de métodos -->
+        <LinearLayout
+            android:id="@+id/containerMetodos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp">
+
+            <!-- Fila VISA -->
+            <LinearLayout
+                android:id="@+id/rowVisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_radio_row">
+
+                <ImageView
+                    android:id="@+id/imgVisa"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/visa_logo"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/tvVisa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="12dp"
+                    android:text="VISA (****123)"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+                <RadioButton
+                    android:id="@+id/rbVisa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorPrimary" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Opción: Añadir tarjeta de débito (no seleccionable) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/rowAddCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="12dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E5E7EB">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    app:srcCompat="@drawable/ic_add"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
+                    android:text="Añadir tarjeta de débito"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CTA -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmar"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Reservar paquete" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

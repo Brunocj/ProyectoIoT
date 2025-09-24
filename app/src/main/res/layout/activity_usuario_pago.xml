@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:layout_marginTop="20dp">
+
+    <!-- Toolbar blanco con back oscuro -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="#0F172A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Título centrado en TextView (independiente de íconos) -->
+    <TextView
+        android:id="@+id/tvToolbarTitle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Pago"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#0F172A"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"/>
+
+    <!-- Contenido scrolleable: limitado por toolbar arriba y CTA abajo -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/btnPagar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card de cabecera -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="2dp"
+                app:strokeColor="#E7ECEF"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/imgLugar"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/machu_picchu"
+                        android:background="@drawable/bg_round"
+                        android:outlineProvider="background"
+                        android:clipToOutline="true"
+                        android:contentDescription="Imagen del tour"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTituloTour"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Machu Picchu"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A"
+                        app:layout_constraintStart_toEndOf="@id/imgLugar"
+                        app:layout_constraintTop_toTopOf="@id/imgLugar"
+                        app:layout_constraintEnd_toStartOf="@id/ratingPill"
+                        android:layout_marginStart="12dp"/>
+
+                    <!-- Rating pill -->
+                    <LinearLayout
+                        android:id="@+id/ratingPill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:background="#FFF7E6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvTituloTour">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@android:drawable/btn_star_big_on"
+                            app:tint="#FDBA21"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 5.0"
+                            android:textColor="#7A5E12"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvUbicacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cusco"
+                        android:textColor="#6B7280"
+                        app:drawableTint="#6B7280"
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_location"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloTour"
+                        app:layout_constraintTop_toBottomOf="@id/tvTituloTour"/>
+
+                    <LinearLayout
+                        android:id="@+id/rowPrecioUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/tvTituloTour"
+
+                        app:layout_constraintTop_toBottomOf="@id/tvUbicacion">
+
+                        <TextView
+                            android:id="@+id/tvMoneda"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S/.300"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary"/>
+
+
+                        <TextView
+                            android:id="@+id/tvUnidad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" /persona"
+                            android:textSize="16sp"
+                            android:textColor="#6B7280"/>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card: Tu reserva -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="1dp"
+                app:strokeColor="#E7ECEF"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tu reserva"
+                        android:textColor="#0F766E"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:paddingBottom="8dp"/>
+
+                    <!-- Fecha -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_menu_my_calendar"
+                            app:tint="#64748B"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:text="Fecha"
+                            android:textColor="#1F2937"/>
+
+                        <TextView
+                            android:id="@+id/tvFecha"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Elige una fecha"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorPrimary"/>
+                    </LinearLayout>
+
+                    <!-- Personas -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_menu_sort_by_size"
+                            app:tint="#64748B"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:text="Cantidad"
+                            android:textColor="#1F2937"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMenos"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:padding="0dp"
+                            android:includeFontPadding="false"
+                            android:text="-"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textColor="#7B8292"
+                            app:cornerRadius="18dp"
+                            app:backgroundTint="#E5E7EB" />
+
+                        <TextView
+                            android:id="@+id/tvCantidad"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textStyle="bold"
+                            android:textColor="#0F172A"
+                            android:textSize="16sp"
+                            android:paddingHorizontal="6dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMas"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:padding="0dp"
+                            android:includeFontPadding="false"
+                            android:text="+"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textColor="@android:color/white"
+                            app:cornerRadius="18dp"
+                            app:backgroundTint="?attr/colorPrimary" />
+                    </LinearLayout>
+
+
+
+                    <!-- Empresa -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_menu_manage"
+                            app:tint="#64748B"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:text="Empresa"
+                            android:textColor="#1F2937"/>
+
+                        <TextView
+                            android:id="@+id/tvEmpresa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CuscoTours SA"
+                            android:textColor="#0F172A"/>
+                    </LinearLayout>
+
+                    <!-- Contacto -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_menu_call"
+                            app:tint="#64748B"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:text="Contacto"
+                            android:textColor="#1F2937"/>
+
+                        <TextView
+                            android:id="@+id/tvTelefono"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0214345646"
+                            android:textColor="#0F172A"/>
+                    </LinearLayout>
+
+                    <!-- Separador punteado -->
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEF2F6"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <!-- Detalles -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detalles"
+                        android:textColor="#0F766E"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:paddingBottom="4dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+                        <TextView
+                            android:id="@+id/tvTotalLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total (1 persona)"
+                            android:textColor="#374151"/>
+                        <TextView
+                            android:id="@+id/tvTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S/.300.00"
+                            android:textColor="#0F172A"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cuota"
+                            android:textColor="#374151"/>
+                        <TextView
+                            android:id="@+id/tvCuota"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S/.5.00"
+                            android:textColor="#0F172A"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="6dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Precio total"
+                            android:textStyle="bold"
+                            android:textColor="#0F172A"/>
+                        <TextView
+                            android:id="@+id/tvPrecioFinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S/.305.00"
+                            android:textStyle="bold"
+                            android:textColor="#0F172A"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- CTA siempre abajo -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPagar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:text="Seleccionar método de pago"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

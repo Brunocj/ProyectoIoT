@@ -19,6 +19,11 @@
     <color name="text_primary">#2C3E50</color>
     <color name="text_secondary">#7F8C8D</color>
     <color name="text_hint">#BDC3C7</color>
+    <color name="star_selected">#FFEB3B</color>
+
+    <!-- Color para estrellas apagadas -->
+    <color name="star_unselected">#9E9E9E</color>
+
 
 
 </resources>

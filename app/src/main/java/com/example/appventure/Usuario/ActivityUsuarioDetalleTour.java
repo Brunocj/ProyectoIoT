@@ -6,6 +6,7 @@ import android.text.Layout;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +65,26 @@ public class ActivityUsuarioDetalleTour extends AppCompatActivity {
             isAdicionalExpanded = !isAdicionalExpanded;
             applyExpandState(tvAdicional, btnVerMasAdicional, fullAdicional, isAdicionalExpanded);
             fade(tvAdicional);
+        });
+
+        Button btnReservar = findViewById(R.id.btn_reservar);
+        btnReservar.setOnClickListener(v -> {
+            String titulo = ((TextView) findViewById(R.id.tvTitulo)).getText().toString();
+            String ubicacion = ((TextView) findViewById(R.id.tvUbicacion)).getText().toString();
+
+            // Lee el precio unitario del detalle (ej: "S/300" o "S/.300")
+            String precioStr = ((TextView) findViewById(R.id.tvPrecioUnitDetalle)).getText().toString();
+            double precioUnit = parsePrecio(precioStr); // helper de abajo
+
+            // Si tu imagen de cabecera es fija, puedes pasar su resId directamente:
+            int imgRes = R.drawable.machu_picchu;
+
+            Intent i = new Intent(ActivityUsuarioDetalleTour.this, ActivityUsuarioPago.class);
+            i.putExtra("TITULO", titulo);
+            i.putExtra("UBICACION", ubicacion);
+            i.putExtra("PRECIO_UNIT", precioUnit);
+            i.putExtra("IMG_RES", imgRes);
+            startActivity(i);
         });
     }
 
@@ -131,5 +152,12 @@ public class ActivityUsuarioDetalleTour extends AppCompatActivity {
 
     private void processReservation() {
         Toast.makeText(this, "Reserva procesada 🎉", Toast.LENGTH_SHORT).show();
+    }
+
+    private double parsePrecio(String raw) {
+        if (raw == null) return 0;
+        String limpio = raw.replaceAll("[^0-9.]", ""); // deja solo dígitos y punto
+        if (limpio.isEmpty()) return 0;
+        try { return Double.parseDouble(limpio); } catch (Exception e) { return 0; }
     }
 }

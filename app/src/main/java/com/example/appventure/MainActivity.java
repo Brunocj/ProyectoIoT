@@ -22,18 +22,18 @@ public class MainActivity extends AppCompatActivity {
 
         btnIniciarSesion.setOnClickListener(v -> {
 
-//            Intent i = new Intent(MainActivity.this, BlankActivityUsuario.class);
-//            i.putExtra(BlankActivityUsuario.EXTRA_START_DEST, BlankActivityUsuario.DEST_HOME);
-//            startActivity(i);
-//            finish();
+            Intent i = new Intent(MainActivity.this, BlankActivityUsuario.class);
+            i.putExtra(BlankActivityUsuario.EXTRA_START_DEST, BlankActivityUsuario.DEST_HOME);
+            startActivity(i);
+            finish();
 
 //            Intent i = new Intent(MainActivity.this, BlankActivityAdminEmpresa.class);
 //            startActivity(i);
 //            finish();
 //
-            Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
-            startActivity(i);
-            finish();
+ //             Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
+//            startActivity(i);
+//            finish();
 
         });
     }

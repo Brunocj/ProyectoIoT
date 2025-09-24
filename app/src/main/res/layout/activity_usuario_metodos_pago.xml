@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-
     android:padding="10dp">
 
     <!-- AppBar: asegura z-order y toque correcto -->
@@ -22,6 +21,7 @@
             app:navigationIconTint="@android:color/black"
             app:popupTheme="@style/ThemeOverlay.Material3.Light"
             app:menu="@menu/menu_metodos_pago">
+
             <!-- Título propio, centrado -->
             <TextView
                 android:id="@+id/tvToolbarTitle"
@@ -38,8 +38,7 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <!-- El RV queda automáticamente debajo del AppBar -->
+    <!-- Lista de tarjetas (debajo del AppBar) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCards"
         android:layout_width="match_parent"
@@ -50,4 +49,50 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <!-- Barra inferior para ELIMINAR (inicialmente oculta) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomDeleteBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="gone"
+        android:padding="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeleteCancel"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                app:strokeColor="#D32F2F"
+                android:textColor="#D32F2F"/>
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeleteConfirm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Eliminar tarjeta"
+                android:textAllCaps="false"
+                android:enabled="false"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

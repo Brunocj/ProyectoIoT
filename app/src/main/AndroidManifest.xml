@@ -44,6 +44,7 @@
         <activity android:name=".Guia.ChatDetalleGuiaActivity"
             android:exported="false"/>
         <activity android:name=".Usuario.ActivityUsuarioDetalleTour"/>
+        <activity android:name=".Usuario.ActivityUsuarioPago"/>
 
     </application>
 
