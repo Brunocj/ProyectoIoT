@@ -20,7 +20,7 @@ import java.util.List;
 public class OfertaAdapterGuia extends RecyclerView.Adapter<OfertaAdapterGuia.OfertaViewHolder> {
 
     private final List<Oferta> ofertaList;
-    private final FragmentActivity activity; // 👉 necesitamos esto para navegar
+    private final FragmentActivity activity;
 
     public OfertaAdapterGuia(List<Oferta> ofertaList, FragmentActivity activity) {
         this.ofertaList = ofertaList;
@@ -44,26 +44,23 @@ public class OfertaAdapterGuia extends RecyclerView.Adapter<OfertaAdapterGuia.Of
         holder.txtPago.setText("Pago: " + oferta.getPago());
         holder.imgTour.setImageResource(oferta.getImagen());
 
-        // 👇 Redondeo del rating a 1 decimal
         String ratingFormateado = String.format("%.1f", oferta.getRating());
         holder.txtRatingBottom.setText(ratingFormateado);
 
-        // 👇 Click en la card
         holder.itemView.setOnClickListener(v -> {
             DetalleOfertaGuiaFragment detalle = new DetalleOfertaGuiaFragment();
-
             Bundle args = new Bundle();
             args.putString("titulo", oferta.getTitulo());
             args.putString("fecha", oferta.getFecha());
             args.putString("pago", oferta.getPago());
             args.putDouble("rating", oferta.getRating());
             args.putInt("imagenRes", oferta.getImagen());
-            args.putString("descripcion", oferta.getDescripcion()); // opcional si la agregas
+            args.putString("descripcion", oferta.getDescripcion());
             detalle.setArguments(args);
 
             activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.content_container_guia, detalle) // 👈 asegúrate de usar tu container
+                    .replace(R.id.content_container_guia, detalle)
                     .addToBackStack(null)
                     .commit();
         });
