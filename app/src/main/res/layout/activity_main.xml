@@ -204,8 +204,48 @@
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginTop="4dp"
                 android:elevation="2dp"
-                android:text="Iniciar Sesión"
+                android:text="Iniciar sesión como Usuario"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLoginGuia"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:elevation="2dp"
+                android:text="Iniciar sesión como Guía"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLoginAdminEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:elevation="2dp"
+                android:text="Iniciar sesión como Admin de empresa"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLoginSuperadmin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:elevation="2dp"
+                android:text="Iniciar sesión como Superadmin"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold"

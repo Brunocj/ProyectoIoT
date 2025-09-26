@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BlankActivityUsuario"  />
+        <activity android:name=".BlankActivityAdminEmpresa"  />
         <activity android:name=".AddCardActivity"  />
         <activity android:name=".BlankActivityGuia" />
         <meta-data
