@@ -61,7 +61,7 @@ public class HomeFragmentUsuario extends Fragment {
         List<Tour> destacados = new ArrayList<>();
         destacados.add(new Tour(R.drawable.lomas_de_lachay, "Lomas de Lachay", "Huacho, Lima", "S/. 150", "4.7"));
         destacados.add(new Tour(R.drawable.machu_picchu, "Machu Picchu", "Cusco", "S/. 350", "5.0"));
-        destacados.add(new Tour(R.drawable.lomas_de_lachay, "Reserva Lomas", "Lima", "S/. 120", "4.5"));
+        destacados.add(new Tour(R.drawable.lomas_de_lachay, "Lomas de Lachay", "Lima", "S/. 120", "4.5"));
 
         List<Tour> listado = new ArrayList<>();
         listado.add(new Tour(R.drawable.machu_picchu, "Machu Picchu", "Cusco", "S/. 300", "5.0"));
