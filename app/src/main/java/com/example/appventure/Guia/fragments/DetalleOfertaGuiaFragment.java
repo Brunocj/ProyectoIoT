@@ -30,7 +30,7 @@ public class DetalleOfertaGuiaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detalle_oferta_guia, container, false);
+        View view = inflater.inflate(R.layout.fragment_guia_detalle_oferta, container, false);
 
         // Inicializar vistas
         btnBack = view.findViewById(R.id.btnBack);
