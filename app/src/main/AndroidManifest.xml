@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".BlankActivityUsuario"  />
         <activity android:name=".BlankActivityAdminEmpresa"  />
+        <activity android:name=".BlankActivitySuperadmin"  />
         <activity android:name=".AddCardActivity"  />
         <activity android:name=".BlankActivityGuia" />
         <meta-data
@@ -46,6 +47,12 @@
             android:exported="false"/>
         <activity android:name=".Usuario.ActivityUsuarioDetalleTour"/>
         <activity android:name=".Usuario.ActivityUsuarioPago"/>
+        <activity android:name=".Superadmin.UserDetailActivity"/>
+        <activity android:name=".Superadmin.GuideDetailActivitySuperadmin"/>
+        <activity android:name=".Superadmin.LogDetailActivitySuperadmin"/>
+        <activity android:name=".Superadmin.ReportsActivitySuperadmin"/>
+        <activity android:name=".Superadmin.StatisticsActivitySuperadmin"/>
+        <activity android:name=".Superadmin.CreateAdminActivitySuperadmin"/>
 
     </application>
 

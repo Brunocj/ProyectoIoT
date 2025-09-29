@@ -24,6 +24,17 @@
     <!-- Color para estrellas apagadas -->
     <color name="star_unselected">#9E9E9E</color>
 
+    <!-- Colores adicionales para sistema de administración -->
+    <color name="primary_color">@color/teal_primary</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="dark_gray">#424242</color>
+    <color name="success_color">#4CAF50</color>
+    <color name="error_color">#F44336</color>
+    <color name="warning_color">#FF9800</color>
+    <color name="chip_background_selector">@color/background_gray</color>
 
+    <!-- Colores para niveles de logs -->
+    <color name="info_color">#2196F3</color>      <!-- Azul -->
+    <color name="critical_color">#000000</color>   <!-- Negro -->
 
 </resources>

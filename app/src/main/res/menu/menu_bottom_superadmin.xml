@@ -6,17 +6,17 @@
         android:title="Inicio"/>
 
     <item
-        android:id="@+id/nav_chat"
-        android:icon="@drawable/ic_chat"
-        android:title="Chat"/>
+        android:id="@+id/nav_logs"
+        android:icon="@drawable/ic_logs"
+        android:title="Logs"/>
 
     <item
-        android:id="@+id/nav_calendar"
-        android:icon="@drawable/ic_calendar"
-        android:title="Agenda"/>
+        android:id="@+id/nav_usuarios"
+        android:icon="@drawable/ic_users"
+        android:title="Usuarios"/>
 
     <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_profile"
-        android:title="Perfil"/>
+        android:id="@+id/nav_guias"
+        android:icon="@drawable/ic_guide"
+        android:title="Guías"/>
 </menu>

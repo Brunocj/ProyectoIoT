@@ -35,7 +35,16 @@ public class MainActivity extends AppCompatActivity {
         };
 
         if (btnUsuario != null)      btnUsuario.setOnClickListener(goAsUsuario);
-        if (btnSuperadmin != null)   btnSuperadmin.setOnClickListener(goAsUsuario); // misma redirección que Usuario
+        
+        // === Superadmin (navegación propia) ===
+        if (btnSuperadmin != null) {
+            btnSuperadmin.setOnClickListener(v -> {
+                Intent i = new Intent(MainActivity.this, BlankActivitySuperadmin.class);
+                i.putExtra(BlankActivitySuperadmin.EXTRA_START_DEST, BlankActivitySuperadmin.DEST_HOME);
+                startActivity(i);
+                finish();
+            });
+        }
 
         // === Guía ===
         if (btnGuia != null) {

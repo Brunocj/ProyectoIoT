@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingVertical="12dp"
+    android:paddingHorizontal="16dp">
+
+    <TextView
+        android:id="@+id/textCompanyName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Tours Cusco Premium"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textTotalTours"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="23"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textRevenue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="€4,350"
+        android:textSize="14sp"
+        android:textColor="@color/success_color"
+        android:textStyle="bold"
+        android:gravity="end" />
+
+</LinearLayout>

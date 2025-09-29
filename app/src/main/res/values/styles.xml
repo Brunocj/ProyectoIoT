@@ -13,4 +13,16 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <!-- Estilos para imágenes circulares -->
+    <style name="CircularImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Estilos para imágenes con bordes redondeados -->
+    <style name="RoundedCornerImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
 </resources>
