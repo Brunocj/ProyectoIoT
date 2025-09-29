@@ -34,11 +34,7 @@ public class ReservasHistorialFragment extends Fragment {
 
         clickTarget.setOnClickListener(v -> {
             Fragment parent = getParentFragment();
-            if (parent instanceof ReservationsFragmentUsuario) {
-                // Demo estática: actionMode="RATE" -> Detalle con CalificarExperiencia
-                ((ReservationsFragmentUsuario) parent)
-                        .openDetalleFullScreen("RATE", "ID_DEMO");
-            }
+
         });
     }
 }

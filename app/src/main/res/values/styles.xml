@@ -25,4 +25,33 @@
         <item name="cornerSize">12dp</item>
     </style>
 
+    <!-- Alias para resolver referencias a @style/Shape -->
+    <style name="Shape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Overlay redondeado (píldora) -->
+    <style name="Shape.Pill">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Text.SegmentChip" parent="@style/TextAppearance.Material3.LabelLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Chip del segmentado (sin colores; se setean por código) -->
+    <style name="SegmentChip" parent="Widget.Material3.Chip.Filter">
+        <item name="shapeAppearanceOverlay">@style/Shape.Pill</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="chipStartPadding">20dp</item>
+        <item name="chipEndPadding">20dp</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconVisible">false</item>
+    </style>
 </resources>

@@ -159,7 +159,7 @@
 
         </LinearLayout>
 
-        <!-- Gráfico Ventas por Servicios MEJORADO -->
+        <!-- Gráfico Ventas por Servicios -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -189,7 +189,6 @@
                     android:layout_height="120dp"
                     android:layout_marginBottom="16dp">
 
-                    <!-- Puntos sobre la línea con valores -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
@@ -424,7 +423,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Gráfico Ventas por Tour -->
+        <!-- Gráfico Ventas por Tour (Barras) -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -448,7 +447,6 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="20dp" />
 
-                <!-- Gráfico de barras elegante -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
@@ -457,7 +455,7 @@
                     android:baselineAligned="false"
                     android:layout_marginBottom="16dp">
 
-                    <!-- Barra Lima -->
+                    <!-- Barras del gráfico (mantiene las mismas 6 barras) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -472,16 +470,12 @@
                             app:cardCornerRadius="8dp"
                             app:cardElevation="2dp"
                             android:backgroundTint="#E8F4FD">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                    <!-- Barra Machu P -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -489,23 +483,18 @@
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_marginEnd="8dp">
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="65dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="2dp"
                             android:backgroundTint="#E8F4FD">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                    <!-- Barra Junín -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -513,23 +502,18 @@
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_marginEnd="8dp">
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="2dp"
                             android:backgroundTint="#E8F4FD">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                    <!-- Barra Ayacucho -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -537,23 +521,18 @@
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_marginEnd="8dp">
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="85dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="2dp"
                             android:backgroundTint="#E8F4FD">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                    <!-- Barra Tarapoto (destacada) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -561,8 +540,6 @@
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
                         android:layout_marginEnd="8dp">
-
-                        <!-- Tooltip -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -570,7 +547,6 @@
                             app:cardCornerRadius="12dp"
                             app:cardElevation="4dp"
                             android:backgroundTint="#1C1C1E">
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -580,56 +556,43 @@
                                 android:textStyle="bold"
                                 android:paddingHorizontal="8dp"
                                 android:paddingVertical="4dp" />
-
                         </androidx.cardview.widget.CardView>
-
-                        <!-- Barra destacada -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="110dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="6dp"
                             android:backgroundTint="#1C1C1E">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                    <!-- Barra Iquitos -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center_horizontal">
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="2dp"
                             android:backgroundTint="#E8F4FD">
-
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
-
                         </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <!-- Labels de ciudades -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -638,7 +601,6 @@
                         android:textSize="12sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -647,7 +609,6 @@
                         android:textSize="12sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -656,7 +617,6 @@
                         android:textSize="12sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -665,7 +625,6 @@
                         android:textSize="11sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -674,7 +633,6 @@
                         android:textSize="12sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -683,14 +641,13 @@
                         android:textSize="12sp"
                         android:textColor="#8E8E93"
                         android:gravity="center" />
-
                 </LinearLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Sección Ventas por Tour -->
+        <!-- Sección Ventas por Tour con RecyclerView -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -711,7 +668,7 @@
                 android:id="@+id/tv_view_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View all"
+                android:text="Ver todo"
                 android:textSize="14sp"
                 android:textColor="#007AFF"
                 android:clickable="true"
@@ -719,208 +676,12 @@
 
         </LinearLayout>
 
-        <!-- Card del Tour Barranco con botón de detalles MEJORADA -->
-        <androidx.cardview.widget.CardView
+        <!-- RecyclerView para Ventas por Tour -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_ventas_tour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:backgroundTint="#FFFFFF">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <!-- Header con título y botón de detalles -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tour Barranco"
-                        android:textSize="18sp"
-                        android:textColor="#1C1C1E"
-                        android:textStyle="bold" />
-
-                    <!-- Botón de detalles elegante -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btn_ver_detalles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="2dp"
-                        android:backgroundTint="#006970"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?android:attr/selectableItemBackground">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Ver detalles"
-                                android:textSize="12sp"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=" ›"
-                                android:textSize="14sp"
-                                android:textColor="#FFFFFF"
-                                android:layout_marginStart="4dp" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <!-- Información del participante -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:cardCornerRadius="16dp"
-                        android:backgroundTint="#E3F2FD"
-                        android:layout_marginEnd="12dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="PP"
-                            android:textSize="10sp"
-                            android:textColor="#007AFF"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Paul Pogba"
-                            android:textSize="14sp"
-                            android:textColor="#1C1C1E"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Guia"
-                            android:textSize="11sp"
-                            android:textColor="#8E8E93" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <!-- Información del tour -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="1dp"
-                        android:backgroundTint="#F8F9FA"
-                        android:layout_marginEnd="12dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="👥 2"
-                            android:textSize="11sp"
-                            android:textColor="#8E8E93"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="4dp" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Miraflores basstop, Anthony llepa"
-                        android:textSize="12sp"
-                        android:textColor="#8E8E93" />
-
-                </LinearLayout>
-
-                <!-- Precio y estado -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="S/. 3,100"
-                        android:textSize="16sp"
-                        android:textColor="#006970"
-                        android:textStyle="bold" />
-
-                    <!-- Estado del tour -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="0dp"
-                        android:backgroundTint="#E8F5E8">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="● Activo"
-                            android:textSize="11sp"
-                            android:textColor="#4CAF50"
-                            android:textStyle="bold"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="6dp" />
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
 

@@ -6,6 +6,7 @@
     <string name="app_logo">AppVenture</string>
     <string name="Regresar">Regresar</string>
     <string name="enviar">enviar</string>
+    <string name="imagen_tour">Imagen del tour</string>
 
 
 </resources>

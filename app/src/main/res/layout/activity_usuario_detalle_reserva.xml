@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_detalle_reserva"
+    android:id="@+id/activity_detalle_reserva"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FCFCFF"
+    android:fitsSystemWindows="true"
     android:padding="10dp">
 
     <!-- Toolbar -->
@@ -25,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Título centrado con los mismos estilos que tu TextView -->
         <TextView
             android:id="@+id/tvToolbarTitle"
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
     </com.google.android.material.appbar.MaterialToolbar>
 
     <!-- Contenido desplazable -->
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Tarjeta principal -->
+            <!-- Tarjeta principal (idéntica a tu fragment) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardReserva"
                 android:layout_width="match_parent"
@@ -69,7 +69,6 @@
                     android:orientation="vertical"
                     android:padding="14dp">
 
-                    <!-- Encabezado "Tu paquete" -->
                     <TextView
                         android:id="@+id/paquete"
                         android:layout_width="wrap_content"
@@ -77,7 +76,6 @@
                         android:text="Tu paquete"
                         android:layout_marginBottom="8dp"/>
 
-                    <!-- Bloque: imagen, nombre, rating, ubicación -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -159,7 +157,6 @@
                         android:background="@android:color/transparent"
                         android:layout_marginTop="8dp"/>
 
-                    <!-- Título Recorrido + Ver en el mapa -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,7 +182,6 @@
                             app:layout_constraintBaseline_toBaselineOf="@id/tvRecorrido"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <!-- Mini-mapa -->
                     <ImageView
                         android:id="@+id/ivMap"
                         android:layout_width="match_parent"
@@ -194,7 +190,6 @@
                         android:src="@drawable/default_route"
                         android:background="@android:color/transparent"/>
 
-                    <!-- Sección Tu reserva -->
                     <TextView
                         android:id="@+id/tvTuReserva"
                         android:layout_width="wrap_content"
@@ -353,22 +348,31 @@
                                 app:layout_constraintBaseline_toBaselineOf="@id/tvContactoLbl"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- ▼▼ CONTENEDOR DE FRAGMENTS ▼▼ -->
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerDetalle"
+            <!-- ▼▼ SECCIONES (antes FragmentContainerView) ▼▼ -->
+            <include
+                android:id="@+id/sectionQr"
+                layout="@layout/fragment_usuario_qr_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
                 android:layout_marginTop="8dp"
-                tools:layout="@layout/fragment_usuario_qr_btn" />
-            <!-- ▲▲ CONTENEDOR DE FRAGMENTS ▲▲ -->
+                tools:visibility="visible"/>
 
-            <!-- Espacio final -->
+            <include
+                android:id="@+id/sectionRate"
+                layout="@layout/fragment_usuario_calificar_experiencia_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="8dp"
+                tools:visibility="gone"/>
+            <!-- ▲▲ SECCIONES ▲▲ -->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="12dp"/>

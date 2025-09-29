@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true">
 
     <!-- =========================
          HERO ESTÁTICA (no scrollea)
@@ -15,7 +16,8 @@
     <FrameLayout
         android:id="@+id/heroContainer"
         android:layout_width="match_parent"
-        android:layout_height="360dp"> <!-- HERO_HEIGHT_DP -->
+        android:layout_height="360dp"
+        android:fitsSystemWindows="true"> <!-- HERO_HEIGHT_DP -->
 
         <ImageView
             android:id="@+id/iv_machu_picchu"
@@ -46,7 +48,8 @@
         android:background="@android:color/transparent"
         android:elevation="0dp"
         android:stateListAnimator="@null"
-        app:liftOnScroll="false">
+        app:liftOnScroll="false"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarDetalle"

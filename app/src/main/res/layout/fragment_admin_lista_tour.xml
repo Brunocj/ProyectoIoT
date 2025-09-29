@@ -15,7 +15,6 @@
         android:padding="16dp"
         android:background="#FFFFFF">
 
-        <!-- Botón atrás -->
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="24dp"
@@ -25,7 +24,6 @@
             android:focusable="true"
             android:layout_marginEnd="16dp" />
 
-        <!-- Título -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +34,6 @@
             android:textStyle="bold"
             android:gravity="center" />
 
-        <!-- Botón filtros -->
         <ImageView
             android:id="@+id/btn_filter"
             android:layout_width="24dp"
@@ -102,7 +99,6 @@
         android:paddingBottom="16dp"
         android:background="#FFFFFF">
 
-        <!-- Filtro Todo -->
         <androidx.cardview.widget.CardView
             android:id="@+id/filter_todo"
             android:layout_width="wrap_content"
@@ -124,7 +120,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Filtro Cultural -->
         <androidx.cardview.widget.CardView
             android:id="@+id/filter_cultural"
             android:layout_width="wrap_content"
@@ -160,7 +155,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Filtro Naturaleza -->
         <androidx.cardview.widget.CardView
             android:id="@+id/filter_naturaleza"
             android:layout_width="wrap_content"
@@ -197,419 +191,41 @@
 
     </LinearLayout>
 
-    <!-- Lista de tours -->
-    <ScrollView
+    <!-- RecyclerView para la lista de tours -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_tours"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Tour Machu Picchu -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                android:backgroundTint="#FFFFFF">
-
-                <LinearLayout
-                    android:id="@+id/tour_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!-- Imagen del tour -->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/machu_picchu"
-                            android:scaleType="centerCrop" />
-
-                        <!-- Rating -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="12dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="2dp"
-                            android:backgroundTint="#FFFFFF">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="⭐"
-                                    android:textSize="10sp"
-                                    android:layout_marginEnd="2dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="4.8"
-                                    android:textSize="11sp"
-                                    android:textColor="#1C1C1E"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <!-- Botón favorito -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_margin="12dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="2dp"
-                            android:backgroundTint="#FFFFFF">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_heart_outline"
-                                app:tint="#8E8E93" />
-
-                        </androidx.cardview.widget.CardView>
-
-                    </RelativeLayout>
-
-                    <!-- Información del tour -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- Título y precio -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="4dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Machu Picchu"
-                                android:textSize="16sp"
-                                android:textColor="#1C1C1E"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="S/.300"
-                                android:textSize="14sp"
-                                android:textColor="#006970"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="/persona"
-                                android:textSize="12sp"
-                                android:textColor="#8E8E93" />
-
-                        </LinearLayout>
-
-                        <!-- Descripción -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cusco"
-                            android:textSize="12sp"
-                            android:textColor="#8E8E93"
-                            android:layout_marginBottom="8dp" />
-
-                        <!-- Rating detallado -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="⭐"
-                                android:textSize="12sp"
-                                android:layout_marginEnd="4dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5.0"
-                                android:textSize="12sp"
-                                android:textColor="#1C1C1E"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Tour Fortaleza de Kuélap -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                android:backgroundTint="#FFFFFF">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!-- Imagen del tour -->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/lomas_de_lachay"
-                            android:scaleType="centerCrop" />
-
-                        <!-- Rating -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="12dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="2dp"
-                            android:backgroundTint="#FFFFFF">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="⭐"
-                                    android:textSize="10sp"
-                                    android:layout_marginEnd="2dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="4.9"
-                                    android:textSize="11sp"
-                                    android:textColor="#1C1C1E"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <!-- Botón favorito -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_margin="12dp"
-                            app:cardCornerRadius="16dp"
-                            app:cardElevation="2dp"
-                            android:backgroundTint="#FFFFFF">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/ic_heart_outline"
-                                app:tint="#8E8E93" />
-
-                        </androidx.cardview.widget.CardView>
-
-                    </RelativeLayout>
-
-                    <!-- Información del tour -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <!-- Estados del tour -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
-
-                            <!-- Estado del tour -->
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="8dp"
-                                app:cardCornerRadius="12dp"
-                                app:cardElevation="0dp"
-                                android:backgroundTint="#FFF3E0">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="● Pendiente"
-                                    android:textSize="10sp"
-                                    android:textColor="#FF9800"
-                                    android:textStyle="bold"
-                                    android:paddingHorizontal="8dp"
-                                    android:paddingVertical="4dp" />
-
-                            </androidx.cardview.widget.CardView>
-
-                            <!-- Estado del guía -->
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:cardCornerRadius="12dp"
-                                app:cardElevation="0dp"
-                                android:backgroundTint="#FFEBEE">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Sin guía"
-                                    android:textSize="10sp"
-                                    android:textColor="#F44336"
-                                    android:textStyle="bold"
-                                    android:paddingHorizontal="8dp"
-                                    android:paddingVertical="4dp" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </LinearLayout>
-
-                        <!-- Título y precio -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="4dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Fortaleza de Kuélap"
-                                android:textSize="16sp"
-                                android:textColor="#1C1C1E"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="S/.300"
-                                android:textSize="14sp"
-                                android:textColor="#006970"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="/persona"
-                                android:textSize="12sp"
-                                android:textColor="#8E8E93" />
-
-                        </LinearLayout>
-
-                        <!-- Descripción -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Chachapoyas"
-                            android:textSize="12sp"
-                            android:textColor="#8E8E93"
-                            android:layout_marginBottom="8dp" />
-
-                        <!-- Rating detallado -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="⭐"
-                                android:textSize="12sp"
-                                android:layout_marginEnd="4dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.9"
-                                android:textSize="12sp"
-                                android:textColor="#1C1C1E"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
+        android:padding="16dp"
+        android:clipToPadding="false" />
 
     <!-- Botón flotante -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btn_add_tour"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="8dp"
-        android:backgroundTint="#006970"
-        android:clickable="true"
-        android:focusable="true">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add"
-            app:tint="#FFFFFF" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_add_tour"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="#006970"
+            android:clickable="true"
+            android:focusable="true">
 
-    </androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add"
+                app:tint="#FFFFFF" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -1,78 +1,85 @@
 package com.example.appventure.Guia.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appventure.Guia.adapters.MensajeAdapter;
+import com.example.appventure.Guia.models.Mensaje;
 import com.example.appventure.R;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class ChatDetalleGuiaActivity extends AppCompatActivity {
 
-    private LinearLayout containerMensajes;
-    private ScrollView scrollMensajes;
+    private RecyclerView recyclerMensajes;
+    private MensajeAdapter adapter;
+    private List<Mensaje> listaMensajes = new ArrayList<>();
     private EditText edtMensaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_guia);
+        setContentView(R.layout.activity_general_chat);
 
-        // Referencias
-        containerMensajes = findViewById(R.id.containerMensajes);
-        scrollMensajes = findViewById(R.id.scrollMensajes);
+        // 🔑 Recibir datos del intent
+        String nombre = getIntent().getStringExtra("nombre");
+        String tour = getIntent().getStringExtra("tour");
+        int avatarRes = getIntent().getIntExtra("avatar", R.drawable.default_pfp);
+
+        // Toolbar
+        ImageView ivAvatarChat = findViewById(R.id.ivAvatarChat);
+        TextView tvNombreChat = findViewById(R.id.tvNombreChat);
+        findViewById(R.id.toolbarChat).setOnClickListener(v -> onBackPressed());
+
+        ivAvatarChat.setImageResource(avatarRes);
+        tvNombreChat.setText(nombre + " (" + tour + ")");
+
+        recyclerMensajes = findViewById(R.id.recyclerMensajes);
         edtMensaje = findViewById(R.id.edtMensaje);
         ImageButton btnEnviar = findViewById(R.id.btnEnviar);
 
-        // Toolbar (back)
-        findViewById(R.id.toolbarChat).setOnClickListener(v -> onBackPressed());
+        adapter = new MensajeAdapter(listaMensajes, this);
+        recyclerMensajes.setLayoutManager(new LinearLayoutManager(this));
+        recyclerMensajes.setAdapter(adapter);
+
+        // 🔑 Mensajes demo iniciales (pueden variar según el contacto)
+        if ("Bruno Imanol".equals(nombre)) {
+            listaMensajes.add(new Mensaje("Buenas noches, ¿cuánto tiempo de tolerancia habrá?", "10:15 AM ✓✓", true));
+            listaMensajes.add(new Mensaje("Hola Bruno, el tiempo de tolerancia es de 10 minutos.", "10:30 AM", false));
+            listaMensajes.add(new Mensaje("Gracias por la aclaración", "10:35 AM ✓✓", true));
+        } else {
+            listaMensajes.add(new Mensaje("Hola " + nombre + ", este es tu chat del tour " + tour, "09:00 AM", false));
+        }
+
+        adapter.notifyDataSetChanged();
+        recyclerMensajes.scrollToPosition(listaMensajes.size() - 1);
 
         // Enviar mensaje
         btnEnviar.setOnClickListener(v -> {
             String texto = edtMensaje.getText().toString().trim();
             if (!texto.isEmpty()) {
-                agregarMensaje(texto, true); // true = saliente
+                String hora = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
+                listaMensajes.add(new Mensaje(texto, hora + " ✓✓", true));
+                adapter.notifyItemInserted(listaMensajes.size() - 1);
+                recyclerMensajes.scrollToPosition(listaMensajes.size() - 1);
                 edtMensaje.setText("");
 
-                // Demo: respuesta automática
-                agregarMensaje("Recibido: " + texto, false);
+                // Respuesta automática (mock)
+                listaMensajes.add(new Mensaje(nombre + ": Recibido -> " + texto, hora, false));
+                adapter.notifyItemInserted(listaMensajes.size() - 1);
+                recyclerMensajes.scrollToPosition(listaMensajes.size() - 1);
             }
         });
-    }
-
-    private void agregarMensaje(String texto, boolean esSaliente) {
-        TextView tv = new TextView(this);
-        tv.setText(texto);
-        tv.setTextSize(14);
-
-        int padding = (int) getResources().getDimension(R.dimen.padding_message);
-        tv.setPadding(padding, padding, padding, padding);
-
-        if (esSaliente) {
-            tv.setBackgroundResource(R.drawable.bg_bubble_outgoing);
-            tv.setTextColor(getResources().getColor(android.R.color.white));
-            tv.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-        } else {
-            tv.setBackgroundResource(R.drawable.bg_bubble_incoming);
-            tv.setTextColor(getResources().getColor(android.R.color.black));
-            tv.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-        }
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0, 12, 0, 0);
-        params.gravity = esSaliente ? android.view.Gravity.END : android.view.Gravity.START;
-
-        tv.setLayoutParams(params);
-        containerMensajes.addView(tv);
-
-        // Scroll al final
-        scrollMensajes.post(() -> scrollMensajes.fullScroll(View.FOCUS_DOWN));
     }
 }

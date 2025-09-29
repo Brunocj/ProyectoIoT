@@ -33,11 +33,7 @@ public class ReservasPendientesFragment extends Fragment {
 
         clickTarget.setOnClickListener(v -> {
             Fragment parent = getParentFragment();
-            if (parent instanceof ReservationsFragmentUsuario) {
-                // Demo estática: actionMode="QR" -> Detalle con botones de QR
-                ((ReservationsFragmentUsuario) parent)
-                        .openDetalleFullScreen("QR", "ID_DEMO");
-            }
+
         });
     }
 }

@@ -26,6 +26,8 @@
         <activity android:name=".BlankActivitySuperadmin"  />
         <activity android:name=".AddCardActivity"  />
         <activity android:name=".BlankActivityGuia" />
+        <activity android:name=".Usuario.DetalleReservaActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCCGlNqaHAnwEGX1uiwrAiIjRzeVPNFSdI"/>
@@ -53,6 +55,10 @@
         <activity android:name=".Superadmin.ReportsActivitySuperadmin"/>
         <activity android:name=".Superadmin.StatisticsActivitySuperadmin"/>
         <activity android:name=".Superadmin.CreateAdminActivitySuperadmin"/>
+
+
+        <activity android:name=".Guia.activities.EscanearQRActivity"
+            android:exported="false" />
 
     </application>
 

@@ -1,38 +1,35 @@
 package com.example.appventure.Guia.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.appventure.Guia.activities.ChatDetalleGuiaActivity;
+import com.example.appventure.Guia.adapters.ChatAdapter;
+import com.example.appventure.Guia.models.Chat;
 import com.example.appventure.R;
 import com.example.appventure.databinding.FragmentGuiaChatBinding;
 
-/**
- * Fragmento de lista de chats para Guía.
- * Incluye buscador y filtro (Todos / Tours activos).
- * Para que el filtro por texto funcione, cada ítem del contenedor
- * debe tener en el atributo android:tag metadatos como:
- *   "tour=Machu Picchu;estado=activo;nombre=Bruno Imanol"
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChatFragmentGuia extends Fragment {
 
     private FragmentGuiaChatBinding binding;
+    private ChatAdapter adapter;
+    private List<Chat> chatList;
     private boolean filtroSoloActivos = false;
     private String query = "";
 
-    public ChatFragmentGuia() { /* Constructor vacío requerido */ }
+    public ChatFragmentGuia() { }
 
     @Nullable
     @Override
@@ -41,86 +38,79 @@ public class ChatFragmentGuia extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentGuiaChatBinding.inflate(inflater, container, false);
 
+        // 📌 Lista dummy (por ahora estática, luego será DB)
+        chatList = new ArrayList<>();
+        chatList.add(new Chat("Bruno Imanol", "Machu Picchu", "Tú: Gracias por la aclaración", "10:12 pm", R.drawable.default_pfp, 1));
+        chatList.add(new Chat("Sofía Vergara", "Machu Picchu", "Tú: Está bien, gracias", "10:28 pm", R.drawable.default_pfp, 0));
+        chatList.add(new Chat("Julio Iglesias", "Fortaleza de Kuelap", "Julio: Nos vemos mañana sin problema", "10:35 pm", R.drawable.default_pfp, 3));
+
+        // Configurar RecyclerView
+        adapter = new ChatAdapter(requireContext(), chatList);
+        binding.recyclerChats.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerChats.setAdapter(adapter);
+
         // --- Buscador ---
         binding.etBuscar.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 query = s.toString().trim().toLowerCase();
-                aplicarFiltros();
+                filtrarChats();
             }
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // --- Filtros (segmento) ---
+        // --- Filtros ---
         binding.chipTodos.setOnClickListener(v -> {
             filtroSoloActivos = false;
             seleccionarChip(true);
-            aplicarFiltros();
+            filtrarChats();
         });
 
         binding.chipActivos.setOnClickListener(v -> {
             filtroSoloActivos = true;
             seleccionarChip(false);
-            aplicarFiltros();
+            filtrarChats();
         });
 
-        // Estado inicial
         seleccionarChip(true);
-        aplicarFiltros();
-
-        binding.item1.setOnClickListener(v ->
-                startActivity(new Intent(requireContext(), ChatDetalleGuiaActivity.class))
-        );
-
 
         return binding.getRoot();
     }
 
     private void seleccionarChip(boolean todosSeleccionado) {
-        TextView cTodos = binding.chipTodos;
-        TextView cActivos = binding.chipActivos;
-
-        // Color #475467 con opacidad completa (ARGB)
         int colorChip = 0xFF475467;
 
         if (todosSeleccionado) {
-            cTodos.setBackgroundResource(R.drawable.bg_chip_filled);
-            cTodos.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
+            binding.chipTodos.setBackgroundResource(R.drawable.bg_chip_filled);
+            binding.chipTodos.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
 
-            cActivos.setBackgroundResource(R.drawable.bg_chip_outlined);
-            cActivos.setTextColor(colorChip);
+            binding.chipActivos.setBackgroundResource(R.drawable.bg_chip_outlined);
+            binding.chipActivos.setTextColor(colorChip);
         } else {
-            cActivos.setBackgroundResource(R.drawable.bg_chip_filled);
-            cActivos.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
+            binding.chipActivos.setBackgroundResource(R.drawable.bg_chip_filled);
+            binding.chipActivos.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
 
-            cTodos.setBackgroundResource(R.drawable.bg_chip_outlined);
-            cTodos.setTextColor(colorChip);
+            binding.chipTodos.setBackgroundResource(R.drawable.bg_chip_outlined);
+            binding.chipTodos.setTextColor(colorChip);
         }
     }
 
+    /** Aplica filtros de búsqueda y estado sobre la lista */
+    private void filtrarChats() {
+        List<Chat> filtrados = new ArrayList<>();
+        for (Chat c : chatList) {
+            boolean pasaTexto = query.isEmpty() ||
+                    c.getNombre().toLowerCase().contains(query) ||
+                    c.getTour().toLowerCase().contains(query);
 
-    /** Aplica el filtro de texto y el estado (activos/todos) sobre cada ítem del contenedor. */
-    private void aplicarFiltros() {
-        LinearLayout container = binding.containerChats;
+            boolean pasaEstado = !filtroSoloActivos || c.getUnreadCount() > 0;
 
-        for (int i = 0; i < container.getChildCount(); i++) {
-            View item = container.getChildAt(i);
-
-            // Ignorar vistas sin metadatos (p.ej., Space u otros separadores)
-            Object tagObj = item.getTag();
-            if (tagObj == null) {
-                // Si no tiene tag, lo mostramos sólo si no estamos filtrando nada.
-                item.setVisibility(query.isEmpty() && !filtroSoloActivos ? View.VISIBLE : View.GONE);
-                continue;
+            if (pasaTexto && pasaEstado) {
+                filtrados.add(c);
             }
-
-            String meta = tagObj.toString().toLowerCase();
-
-            boolean pasaTexto = query.isEmpty() || meta.contains(query);
-            boolean pasaEstado = !filtroSoloActivos || meta.contains("estado=activo");
-
-            item.setVisibility((pasaTexto && pasaEstado) ? View.VISIBLE : View.GONE);
         }
+        adapter = new ChatAdapter(requireContext(), filtrados);
+        binding.recyclerChats.setAdapter(adapter);
     }
 
     @Override

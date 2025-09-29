@@ -1,8 +1,11 @@
 package com.example.appventure.Usuario;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appventure.R;
@@ -10,15 +13,24 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class ActivityChatUsuario extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_chat);
+        setContentView(R.layout.activity_general_chat);
 
         MaterialToolbar toolbar = findViewById(R.id.toolbarChat);
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        ImageView ivAvatarChat = toolbar.findViewById(R.id.ivAvatarChat);
+        TextView tvNombreChat = toolbar.findViewById(R.id.tvNombreChat);
+        ImageButton btnOpciones = toolbar.findViewById(R.id.btnOpciones);
 
-        TextView tvTitulo = findViewById(R.id.tvTituloChat);
-        String t = getIntent().getStringExtra("chatTitle");
-        if (t != null && !t.isEmpty()) tvTitulo.setText(t);
+        String nombre = getIntent().getStringExtra("nombre");
+        int avatarResId = getIntent().getIntExtra("avatarResId", R.drawable.default_pfp);
+
+        tvNombreChat.setText(nombre != null ? nombre : "Chat");
+        ivAvatarChat.setImageResource(avatarResId);
+
+        toolbar.setNavigationOnClickListener(v -> finish());
+        btnOpciones.setOnClickListener(v -> {
+            // TODO: mostrar menú (acciones del chat)
+        });
     }
 }

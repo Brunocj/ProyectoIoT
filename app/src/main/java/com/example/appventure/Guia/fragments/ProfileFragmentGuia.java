@@ -6,21 +6,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appventure.Guia.activities.ActivityGuiaInfoPersonal;
+import com.example.appventure.Guia.adapters.PerfilAdapter;
+import com.example.appventure.Guia.models.PerfilItem;
 import com.example.appventure.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileFragmentGuia extends Fragment {
 
-    private LinearLayout itemGanancias, itemNotificaciones, itemAyuda;
+    private RecyclerView recyclerPerfil;
+    private PerfilAdapter adapter;
     private TextView tvCerrarSesion;
-    private ImageView ivEye; // 👈 Nuevo
+    private ImageView ivEye;
 
     public ProfileFragmentGuia() {}
 
@@ -31,55 +38,50 @@ public class ProfileFragmentGuia extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_guia_profile, container, false);
 
-        // Referencias
-        itemGanancias = view.findViewById(R.id.itemGanancias);
-        itemNotificaciones = view.findViewById(R.id.itemNotificaciones);
-        itemAyuda = view.findViewById(R.id.itemAyuda);
+        recyclerPerfil = view.findViewById(R.id.recyclerPerfil);
         tvCerrarSesion = view.findViewById(R.id.tvCerrarSesion);
-        ivEye = view.findViewById(R.id.ivEye); // 👈 referencia al ojito
+        ivEye = view.findViewById(R.id.ivEye);
 
-        // 🔹 Ganancias
-        itemGanancias.setOnClickListener(v -> {
-            Fragment gananciasFragment = new GananciasFragment();
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_container_guia, gananciasFragment)
-                    .addToBackStack(null)
-                    .commit();
+        // Configurar RecyclerView
+        recyclerPerfil.setLayoutManager(new LinearLayoutManager(getContext()));
+        List<PerfilItem> items = new ArrayList<>();
+        items.add(new PerfilItem(R.drawable.ic_wallet, "Ganancias"));
+        items.add(new PerfilItem(R.drawable.ic_notification_bell, "Notificaciones"));
+        items.add(new PerfilItem(R.drawable.ic_help, "Ayuda"));
+
+        adapter = new PerfilAdapter(items, (item, position) -> {
+            switch (position) {
+                case 0:
+                    openFragment(new GananciasFragment());
+                    break;
+                case 1:
+                    openFragment(new NotificacionesFragment());
+                    break;
+                case 2:
+                    openFragment(new AyudaFragment());
+                    break;
+            }
         });
 
-        // 🔹 Notificaciones
-        itemNotificaciones.setOnClickListener(v -> {
-            Fragment notiFragment = new NotificacionesFragment();
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_container_guia, notiFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
+        recyclerPerfil.setAdapter(adapter);
 
-        // 🔹 Ayuda
-        itemAyuda.setOnClickListener(v -> {
-            Fragment ayudaFragment = new AyudaFragment();
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.content_container_guia, ayudaFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
-
-        // 🔹 Editar Perfil (ojito)
+        // Ojito (editar perfil)
         ivEye.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), ActivityGuiaInfoPersonal.class);
             startActivity(intent);
         });
 
-        // 🔹 Cerrar Sesión
-        tvCerrarSesion.setOnClickListener(v -> {
-            // Aquí implementas el logout real (ejemplo: FirebaseAuth.getInstance().signOut())
-            requireActivity().finish(); // por ahora solo cierra la Activity
-        });
+        // Cerrar sesión
+        tvCerrarSesion.setOnClickListener(v -> requireActivity().finish());
 
         return view;
+    }
+
+    private void openFragment(Fragment fragment) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_container_guia, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
