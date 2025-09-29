@@ -32,7 +32,7 @@ public class BlankActivityAdminEmpresa extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.nav_home_admin);
 
-        // Listener para cambiar fragments por item
+        // Listener para cambiar fragments
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_home) {
