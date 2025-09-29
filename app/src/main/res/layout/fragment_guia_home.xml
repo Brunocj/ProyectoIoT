@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -5,14 +6,14 @@
     android:orientation="vertical"
     android:background="#FCFCFF">
 
-    <!-- Contenido fijo (perfil + próximo tour) -->
+    <!-- ====== Sección Perfil + Próximo Tour ====== -->
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- User Info -->
+        <!-- Perfil -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,9 +31,9 @@
                 android:clipToOutline="true" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1">
 
                 <TextView
@@ -42,7 +43,7 @@
                     android:text="Bruno Imanol"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -64,32 +65,29 @@
                         android:layout_marginStart="6dp"
                         android:text="Lima"
                         android:textSize="14sp"
-                        android:textColor="#777777"/>
+                        android:textColor="#777777" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Card: Próximo tour -->
+        <!-- Card Próximo Tour -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardProximoTour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="12dp"
             android:background="@android:color/white"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
+            app:strokeColor="#E0E0E0"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="16dp">
 
-                <!-- Encabezado -->
                 <TextView
                     android:id="@+id/txtTituloProximo"
                     android:layout_width="wrap_content"
@@ -99,34 +97,31 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- Nombre del tour -->
                 <TextView
                     android:id="@+id/txtNombreTour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Machu Picchu"
+                    android:text="Nombre del tour"
                     android:textColor="#0B6B61"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <!-- Fecha -->
                 <TextView
                     android:id="@+id/txtFechaTour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="12 de Septiembre, 08:00 AM"
+                    android:text="Fecha del tour"
                     android:textColor="#667085"
                     android:textSize="14sp" />
 
-                <!-- Ubicación -->
                 <TextView
                     android:id="@+id/txtUbicacionTour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Cusco, Perú"
+                    android:text="Ubicación"
                     android:textColor="#667085"
                     android:textSize="14sp" />
 
@@ -134,9 +129,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
                     android:gravity="end"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="16dp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnVerMapa"
@@ -167,9 +162,7 @@
 
     </LinearLayout>
 
-    <!-- Encabezado fijo -->
-
-    <!-- RecyclerView de ofertas -->
+    <!-- ====== Sección Ofertas ====== -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

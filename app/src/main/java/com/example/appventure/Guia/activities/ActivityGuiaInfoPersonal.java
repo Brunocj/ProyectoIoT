@@ -21,7 +21,7 @@ public class ActivityGuiaInfoPersonal extends AppCompatActivity {
 
         // Toolbar con back
         MaterialToolbar toolbar = findViewById(R.id.toolbarInfo);
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        toolbar.setNavigationOnClickListener(v -> onBackPressed()); // ← Habilitar flecha de retroceder
 
         etNombres   = findViewById(R.id.etNombres);
         etApellidos = findViewById(R.id.etApellidos);
@@ -32,7 +32,7 @@ public class ActivityGuiaInfoPersonal extends AppCompatActivity {
         // Inicialmente deshabilitados
         habilitarCampos(false);
 
-        // Al presionar editar
+        // Botón Editar
         findViewById(R.id.btnEdit).setOnClickListener(v -> {
             habilitarCampos(true);
             btnGuardar.setEnabled(true);
@@ -42,16 +42,15 @@ public class ActivityGuiaInfoPersonal extends AppCompatActivity {
             btnGuardar.setTextColor(getResources().getColor(android.R.color.white));
         });
 
-        // Guardar cambios
+        // Botón Guardar
         btnGuardar.setOnClickListener(v -> {
-            // TODO: aquí guardarías en SharedPreferences o Firebase
+            // TODO: guardar en Firebase/SharedPreferences
             habilitarCampos(false);
             btnGuardar.setEnabled(false);
             btnGuardar.setBackgroundTintList(
                     getResources().getColorStateList(android.R.color.darker_gray)
             );
             btnGuardar.setTextColor(getResources().getColor(android.R.color.black));
-
         });
     }
 
