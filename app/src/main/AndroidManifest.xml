@@ -25,6 +25,8 @@
         <activity android:name=".BlankActivityAdminEmpresa"  />
         <activity android:name=".AddCardActivity"  />
         <activity android:name=".BlankActivityGuia" />
+        <activity android:name=".Usuario.DetalleReservaActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCCGlNqaHAnwEGX1uiwrAiIjRzeVPNFSdI"/>

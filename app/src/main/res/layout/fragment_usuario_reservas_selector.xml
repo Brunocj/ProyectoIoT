@@ -1,94 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#FCFCFF">
+    android:background="#FCFCFF"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp">
 
-    <!-- Título -->
     <TextView
-        android:id="@+id/tvTituloMisReservas"
+        android:id="@+id/tvTituloReservas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mis reservas"
-        android:textSize="20sp"
         android:textStyle="bold"
+        android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"
-        android:layout_gravity="center_horizontal" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- ===== Cápsula de fondo (NO interactiva) ===== -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pillsBackground"
+    <!-- Contenedor 'píldora' existente que sirve de fondo -->
+    <LinearLayout
+        android:id="@+id/segmentContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        app:cardCornerRadius="28dp"
-        app:cardUseCompatPadding="true"
-        app:cardPreventCornerOverlap="true"
-        app:strokeWidth="0dp"
-        app:cardBackgroundColor="#F6F6F6">
+        android:background="@drawable/bg_segment_container"
+        android:padding="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloReservas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
 
-        <!-- ChipGroup: selección única -->
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupReservas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:singleSelection="true"
             app:selectionRequired="true"
-            app:singleLine="true">
+            app:chipSpacingHorizontal="12dp">
 
-            <!-- Pill Pendientes -->
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_pendientes"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/SegmentChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pendientes"
+                android:checkable="true"
                 android:checked="true"
-                android:textColor="@color/chip_text_selector"
-                android:layout_marginEnd="12dp"
-                app:chipBackgroundColor="@color/chip_bg_selector_2"
-                app:chipCornerRadius="24dp"
-                app:chipMinHeight="48dp"
-                app:chipStartPadding="30dp"
-                app:chipEndPadding="30dp"
-                app:chipStrokeWidth="0dp"
-                app:rippleColor="@color/chip_ripple_selector"
-                app:checkedIconVisible="false" />
+                app:useMaterialThemeColors="false"
+                app:rippleColor="@android:color/transparent"/>
 
-            <!-- Pill Historial -->
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_historial"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/SegmentChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Historial"
-                android:textColor="@color/chip_text_selector"
-                app:chipBackgroundColor="@color/chip_bg_selector_2"
-                app:chipCornerRadius="24dp"
-                app:chipMinHeight="48dp"
-                app:chipStartPadding="30dp"
-                app:chipEndPadding="30dp"
-                app:chipStrokeWidth="0dp"
-                app:rippleColor="@color/chip_ripple_selector"
-                app:checkedIconVisible="false" />
+                android:checkable="true"
+                app:useMaterialThemeColors="false"
+                app:rippleColor="@android:color/transparent"/>
         </com.google.android.material.chip.ChipGroup>
-    </com.google.android.material.card.MaterialCardView>
-    <!-- ===== fin cápsula ===== -->
+    </LinearLayout>
 
-    <!-- Contenido dinámico basado en la selección -->
-    <FrameLayout
-        android:id="@+id/content_container"
-        android:layout_width="match_parent"
+    <View
+        android:id="@+id/dividerTop"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#E8ECEF"
+        app:layout_constraintTop_toBottomOf="@id/segmentContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerReservas"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/dividerTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@ public class ChatDetalleGuiaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_guia);
+        setContentView(R.layout.activity_general_chat);
 
         // Referencias
         containerMensajes = findViewById(R.id.containerMensajes);
