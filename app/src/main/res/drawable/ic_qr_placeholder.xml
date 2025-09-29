@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Borde exterior -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M3,3h6v2H5v4H3V3zM15,3h6v6h-2V5h-4V3zM3,15h2v4h4v2H3v-6zM17,19v-4h2v6h-6v-2h4z" />
+
+    <!-- Patrones interiores simulando QR -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M10,10h2v2h-2zM14,10h2v2h-2zM10,14h2v2h-2zM14,14h2v2h-2z" />
+</vector>

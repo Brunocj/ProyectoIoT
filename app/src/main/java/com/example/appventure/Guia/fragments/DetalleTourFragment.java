@@ -1,5 +1,6 @@
 package com.example.appventure.Guia.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appventure.Guia.adapters.DetalleTourAdapter;
+import com.example.appventure.Guia.activities.EscanearQRActivity;
 import com.example.appventure.R;
 
 import java.util.Arrays;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.OnDetalleListener {
 
-    // Claves de argumentos para que TODO use lo mismo
+    // Claves de argumentos
     public static final String ARG_TITULO    = "titulo";
     public static final String ARG_FECHA     = "fecha";
     public static final String ARG_UBICACION = "ubicacion";
@@ -56,7 +58,7 @@ public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.
         btnBack   = view.findViewById(R.id.btnBack);
         recycler  = view.findViewById(R.id.recyclerDetalleTour);
 
-        // 1) Recupera argumentos
+        // Recuperar argumentos
         if (getArguments() != null) {
             titulo    = getArguments().getString(ARG_TITULO, titulo);
             fecha     = getArguments().getString(ARG_FECHA, fecha);
@@ -65,10 +67,10 @@ public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.
             imagenRes = getArguments().getInt(ARG_IMAGEN, imagenRes);
         }
 
-        // 2) Header
+        // Header
         imgHeader.setImageResource(imagenRes);
 
-        // 3) Recycler de secciones (Info, Mapa, Resumen)
+        // Configurar RecyclerView con las secciones (Info, Mapa, Resumen)
         recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
         List<Integer> secciones = Arrays.asList(
                 DetalleTourAdapter.TYPE_INFO,
@@ -86,7 +88,7 @@ public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.
         );
         recycler.setAdapter(adapter);
 
-        // 4) Back
+        // Back
         btnBack.setOnClickListener(v ->
                 requireActivity().getOnBackPressedDispatcher().onBackPressed()
         );
@@ -95,9 +97,8 @@ public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.
     // ====== Callbacks de botones dentro del detalle ======
     @Override
     public void onChatClick() {
-        // abre el chat del tour
         Fragment chat = new ChatFragmentGuia();
-        chat.setArguments(getArguments()); // por si necesitas datos del tour
+        chat.setArguments(getArguments()); // pasa datos del tour si es necesario
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_container_guia, chat)
@@ -107,14 +108,17 @@ public class DetalleTourFragment extends Fragment implements DetalleTourAdapter.
 
     @Override
     public void onQRClick() {
-        // aquí podrías abrir tu lector QR
-        // por ahora simplemente vuelve o deja un TODO
+        // Abrir la nueva actividad para escanear QR
+        Intent intent = new Intent(requireContext(), EscanearQRActivity.class);
+        // opcional: pasar info del tour
+        intent.putExtra("titulo", titulo);
+        startActivity(intent);
     }
 
     @Override
     public void onMapClick() {
         Fragment mapa = new MapaRutaFragment();
-        mapa.setArguments(getArguments()); // reusa datos del tour
+        mapa.setArguments(getArguments()); // reusar datos del tour
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_container_guia, mapa)

@@ -49,6 +49,10 @@
         <activity android:name=".Usuario.ActivityUsuarioDetalleTour"/>
         <activity android:name=".Usuario.ActivityUsuarioPago"/>
 
+
+        <activity android:name=".Guia.activities.EscanearQRActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
