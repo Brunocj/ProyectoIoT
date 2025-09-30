@@ -2,68 +2,124 @@ package com.example.appventure;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
+import android.text.TextUtils;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnIniciarSesion;
+    private TextInputEditText editTextEmail, editTextPassword;
+    private MaterialButton btnLoginUsuario, btnLoginGuia, btnLoginAdmin, btnLoginSuperadmin;
+    private TextView tvForgotPassword, tvRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referencias a los botones (IDs del XML)
-        View btnUsuario        = findViewById(R.id.buttonLogin);
-        View btnGuia           = findViewById(R.id.buttonLoginGuia);
-        View btnAdminEmpresa   = findViewById(R.id.buttonLoginAdminEmpresa);
-        View btnSuperadmin     = findViewById(R.id.buttonLoginSuperadmin);
+        // ==========================
+        //   Referencias
+        // ==========================
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
 
-        // === Usuario (y Superadmin comparten la misma navegación) ===
-        View.OnClickListener goAsUsuario = v -> {
-            Intent i = new Intent(MainActivity.this, BlankActivityUsuario.class);
-            // Mantén el extra si tu flujo lo usa para abrir en HOME
-            i.putExtra(BlankActivityUsuario.EXTRA_START_DEST, BlankActivityUsuario.DEST_HOME);
+        btnLoginUsuario = findViewById(R.id.buttonLogin);
+        btnLoginGuia = findViewById(R.id.buttonLoginGuia);
+        btnLoginAdmin = findViewById(R.id.buttonLoginAdminEmpresa);
+        btnLoginSuperadmin = findViewById(R.id.buttonLoginSuperadmin);
+
+        tvForgotPassword = findViewById(R.id.textViewForgotPassword);
+        tvRegister = findViewById(R.id.textViewRegister);
+
+        // ==========================
+        //   LOGIN USUARIO
+        // ==========================
+        btnLoginUsuario.setOnClickListener(v -> {
+            if (validarCampos()) {
+                Toast.makeText(this, "Login como Usuario", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, BlankActivityUsuario.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // ==========================
+        //   LOGIN GUÍA
+        // ==========================
+        btnLoginGuia.setOnClickListener(v -> {
+            if (validarCampos()) {
+                Toast.makeText(this, "Login como Guía", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, BlankActivityGuia.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // ==========================
+        //   LOGIN ADMIN EMPRESA
+        // ==========================
+        btnLoginAdmin.setOnClickListener(v -> {
+            if (validarCampos()) {
+                Toast.makeText(this, "Login como Admin de Empresa", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, BlankActivityAdminEmpresa.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // ==========================
+        //   LOGIN SUPERADMIN
+        // ==========================
+        btnLoginSuperadmin.setOnClickListener(v -> {
+            if (validarCampos()) {
+                Toast.makeText(this, "Login como Superadmin", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, BlankActivitySuperadmin.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        // ==========================
+        //   OLVIDASTE CONTRASEÑA
+        // ==========================
+        tvForgotPassword.setOnClickListener(v -> {
+            Intent i = new Intent(this, ForgotPasswordActivity.class);
             startActivity(i);
-            finish();
-        };
+        });
 
-        if (btnUsuario != null)      btnUsuario.setOnClickListener(goAsUsuario);
-        
-        // === Superadmin (navegación propia) ===
-        if (btnSuperadmin != null) {
-            btnSuperadmin.setOnClickListener(v -> {
-                Intent i = new Intent(MainActivity.this, BlankActivitySuperadmin.class);
-                i.putExtra(BlankActivitySuperadmin.EXTRA_START_DEST, BlankActivitySuperadmin.DEST_HOME);
-                startActivity(i);
-                finish();
-            });
-        }
-
-        // === Guía ===
-        if (btnGuia != null) {
-            btnGuia.setOnClickListener(v -> {
-                Intent i = new Intent(MainActivity.this, BlankActivityGuia.class);
-                startActivity(i);
-                finish();
-            });
-        }
-
-        // === Admin de empresa ===
-        if (btnAdminEmpresa != null) {
-            btnAdminEmpresa.setOnClickListener(v -> {
-                Intent i = new Intent(MainActivity.this, BlankActivityAdminEmpresa.class);
-                i.putExtra(BlankActivityAdminEmpresa.EXTRA_START_DEST, BlankActivityAdminEmpresa.DEST_HOME);
-                startActivity(i);
-                finish();
-            });
-        }
+        // ==========================
+        //   REGISTRO
+        // ==========================
+        tvRegister.setOnClickListener(v -> {
+            Intent i = new Intent(this, RegisterActivity.class);
+            startActivity(i);
+        });
     }
 
+    // ==========================
+    //   VALIDACIÓN BÁSICA
+    // ==========================
+    private boolean validarCampos() {
+        String email = editTextEmail.getText() != null ? editTextEmail.getText().toString().trim() : "";
+        String pass = editTextPassword.getText() != null ? editTextPassword.getText().toString().trim() : "";
+
+        if (TextUtils.isEmpty(email)) {
+            editTextEmail.setError("Ingresa tu correo");
+            editTextEmail.requestFocus();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(pass)) {
+            editTextPassword.setError("Ingresa tu contraseña");
+            editTextPassword.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
 }

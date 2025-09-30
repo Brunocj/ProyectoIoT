@@ -15,59 +15,56 @@ import com.example.appventure.Usuario.Model.Reserva;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReservasListaAdapter extends RecyclerView.Adapter<ReservasListaAdapter.VH> {
+public class ReservasListaAdapter extends RecyclerView.Adapter<ReservasListaAdapter.ViewHolder> {
 
-    public interface OnReservaClick {
-        void onClick(@NonNull Reserva r);
-        void onLongClick(@NonNull Reserva r);
+    public interface OnReservaClickListener {
+        void onClick(Reserva reserva);
     }
 
-    private final List<Reserva> data = new ArrayList<>();
-    private final OnReservaClick listener;
+    private List<Reserva> reservas;
+    private OnReservaClickListener listener;
 
-    public ReservasListaAdapter(OnReservaClick listener) { this.listener = listener; }
-
-    public void setItems(@NonNull List<Reserva> items) {
-        data.clear();
-        data.addAll(items);
-        notifyDataSetChanged();
+    public ReservasListaAdapter(List<Reserva> reservas, OnReservaClickListener listener) {
+        this.reservas = reservas;
+        this.listener = listener;
     }
 
-    @NonNull @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_reserva, parent, false);
-        return new VH(v);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH h, int position) {
-        Reserva r = data.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Reserva r = reservas.get(position);
 
-        ((TextView) h.itemView.findViewById(R.id.tvNombre)).setText(r.titulo);
-        ((TextView) h.itemView.findViewById(R.id.tvUbicacion)).setText(r.ubicacion);
-        ((TextView) h.itemView.findViewById(R.id.tvFecha)).setText(r.fecha);
-        ((TextView) h.itemView.findViewById(R.id.tvRating)).setText(String.valueOf(r.rating));
+        holder.tvNombre.setText(r.getNombreLugar());
+        holder.tvUbicacion.setText(r.getUbicacion());
+        holder.tvFecha.setText(r.getFecha());
+        holder.tvRating.setText(r.getRating());
 
-        TextView tvHora = h.itemView.findViewById(R.id.tvHora);
-        if (r.hora == null || r.hora.isEmpty()) {
-            tvHora.setVisibility(View.GONE);
-        } else {
-            tvHora.setText(r.hora);
-            tvHora.setVisibility(View.VISIBLE);
-        }
-
-        ImageView img = h.itemView.findViewById(R.id.imgLugar);
-        img.setImageResource(r.imagenRes);
-
-        h.itemView.setOnClickListener(v -> { if (listener != null) listener.onClick(r); });
-        h.itemView.setOnLongClickListener(v -> {
-            if (listener != null) listener.onLongClick(r);
-            return true;
-        });
+        holder.itemView.setOnClickListener(v -> listener.onClick(r));
     }
 
-    @Override public int getItemCount() { return data.size(); }
+    @Override
+    public int getItemCount() {
+        return reservas.size();
+    }
 
-    static class VH extends RecyclerView.ViewHolder { VH(@NonNull View itemView) { super(itemView); } }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvNombre, tvUbicacion, tvFecha, tvRating;
+        ImageView imgLugar;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNombre = itemView.findViewById(R.id.tvNombre);
+            tvUbicacion = itemView.findViewById(R.id.tvUbicacion);
+            tvFecha = itemView.findViewById(R.id.tvFecha);
+            tvRating = itemView.findViewById(R.id.tvRating);
+            imgLugar = itemView.findViewById(R.id.imgLugar);
+        }
+    }
 }

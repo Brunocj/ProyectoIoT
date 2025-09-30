@@ -59,13 +59,7 @@ public class ToursEnCursoFragment extends Fragment {
                 "Pisac – Ollantaytambo – Cusco"
         ));
 
-        tourList.add(new Tour(
-                "Paracas – Islas Ballestas",
-                "25/10/2025 • 08:00 a. m.",
-                "Asignado",
-                R.drawable.paracas,
-                "Paracas, Ica"
-        ));
+
 
         // Adapter con listener
         adapter = new TourAdapter(tourList, new TourAdapter.OnItemClickListener() {

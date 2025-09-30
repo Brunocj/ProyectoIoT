@@ -3,24 +3,44 @@ package com.example.appventure.Usuario.Model;
 
 import androidx.annotation.DrawableRes;
 
-public class Reserva {
-    public final String id;
-    public final String titulo;
-    public final String ubicacion;
-    public final String fecha;
-    public final String hora;
-    public final float rating;
-    @DrawableRes public final int imagenRes;
+import java.io.Serializable;
 
-    public Reserva(String id, String titulo, String ubicacion,
-                     String fecha, String hora, float rating,
-                     @DrawableRes int imagenRes) {
+public class Reserva implements Serializable {
+    private String id;
+    private String nombreLugar;
+    private String ubicacion;
+    private String fecha;
+    private String rating;
+    private String empresa;
+    private int personas;
+
+    // Constructor vacío (Firebase o serialización lo requiere)
+    public Reserva() { }
+
+    public Reserva(String id, String nombreLugar, String ubicacion, String fecha, String rating, String empresa, int personas) {
         this.id = id;
-        this.titulo = titulo;
+        this.nombreLugar = nombreLugar;
         this.ubicacion = ubicacion;
         this.fecha = fecha;
-        this.hora = hora;
         this.rating = rating;
-        this.imagenRes = imagenRes;
+        this.empresa = empresa;
+        this.personas = personas;
     }
+
+    // Getters y setters
+    public String getId() { return id; }
+    public String getNombreLugar() { return nombreLugar; }
+    public String getUbicacion() { return ubicacion; }
+    public String getFecha() { return fecha; }
+    public String getRating() { return rating; }
+    public String getEmpresa() { return empresa; }
+    public int getPersonas() { return personas; }
+
+    public void setId(String id) { this.id = id; }
+    public void setNombreLugar(String nombreLugar) { this.nombreLugar = nombreLugar; }
+    public void setUbicacion(String ubicacion) { this.ubicacion = ubicacion; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
+    public void setRating(String rating) { this.rating = rating; }
+    public void setEmpresa(String empresa) { this.empresa = empresa; }
+    public void setPersonas(int personas) { this.personas = personas; }
 }

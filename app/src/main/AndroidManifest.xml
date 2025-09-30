@@ -60,6 +60,10 @@
         <activity android:name=".Guia.activities.EscanearQRActivity"
             android:exported="false" />
 
+
+        <activity android:name=".ForgotPasswordActivity"/>
+        <activity android:name=".RegisterActivity"/>
+
     </application>
 
 </manifest>

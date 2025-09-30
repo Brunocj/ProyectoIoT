@@ -1,6 +1,12 @@
 package com.example.appventure.Usuario.Fragment;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
+
+import com.example.appventure.Usuario.ActivityUsuarioDetalleTour;
+import com.example.appventure.Usuario.Adapter.ReservasListaAdapter;
+import com.example.appventure.Usuario.DetalleReservaActivity;
+import com.example.appventure.Usuario.Model.Reserva;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.color.MaterialColors;
 import android.os.Bundle;
@@ -11,9 +17,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appventure.R;
 import com.google.android.material.chip.ChipGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragmento de "Mis reservas" (Usuario).
@@ -22,54 +33,68 @@ import com.google.android.material.chip.ChipGroup;
  */
 public class ReservationsFragmentUsuario extends Fragment {
 
-    private Chip chipPendientes;
-    private Chip chipHistorial;
+    private RecyclerView recyclerReservas;
+    private Chip chipPendientes, chipHistorial;
+    private ReservasListaAdapter adapter;
+    private final List<Reserva> listaReservas = new ArrayList<>();
 
     public ReservationsFragmentUsuario() { }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_usuario_reservas_selector, container, false);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_usuario_reservas_selector, container, false);
 
-    @Override
-    public void onViewCreated(@NonNull View root, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(root, savedInstanceState);
+        recyclerReservas = view.findViewById(R.id.recyclerReservas);
+        chipPendientes = view.findViewById(R.id.chip_pendientes);
+        chipHistorial = view.findViewById(R.id.chip_historial);
 
-        final ChipGroup chipGroup = root.findViewById(R.id.chipGroupReservas);
-        chipPendientes = root.findViewById(R.id.chip_pendientes);
-        chipHistorial  = root.findViewById(R.id.chip_historial);
+        recyclerReservas.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Estado inicial
-        chipPendientes.setChecked(true);
-        applyChipStyle(chipPendientes, true);
-        applyChipStyle(chipHistorial, false);
+        adapter = new ReservasListaAdapter(listaReservas, reserva -> {
+            Intent intent = new Intent(getContext(), DetalleReservaActivity.class);
+            intent.putExtra("reserva", reserva);
 
-        chipGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
-            applyChipStyle(chipPendientes, chipPendientes.isChecked());
-            applyChipStyle(chipHistorial, chipHistorial.isChecked());
+            // Si está en Pendientes → modo = "QR", si está en Historial → "RATE"
+            String modo = chipPendientes.isChecked() ? "QR" : "RATE";
+            intent.putExtra("modo", modo);
+
+            startActivity(intent);
         });
+
+        recyclerReservas.setAdapter(adapter);
+
+        // Cargar por defecto pendientes
+        cargarPendientes();
+
+        chipPendientes.setOnClickListener(v -> cargarPendientes());
+        chipHistorial.setOnClickListener(v -> cargarHistorial());
+
+        return view;
     }
 
-    private void applyChipStyle(@NonNull Chip chip, boolean checked) {
-        // Toma los colores del TEMA (no creamos recursos nuevos)
-        int colorPrimary   = MaterialColors.getColor(chip, androidx.appcompat.R.attr.colorPrimary);
-        int colorOnPrimary = MaterialColors.getColor(chip, com.google.android.material.R.attr.colorOnPrimary);
-        int colorOnSurface = MaterialColors.getColor(chip, com.google.android.material.R.attr.colorOnSurface);
+    private void cargarPendientes() {
+        listaReservas.clear();
+        listaReservas.addAll(obtenerPendientes());
+        adapter.notifyDataSetChanged();
+    }
 
-        chip.setRippleColor(ColorStateList.valueOf(android.graphics.Color.TRANSPARENT)); // sin morado
+    private void cargarHistorial() {
+        listaReservas.clear();
+        listaReservas.addAll(obtenerHistorial());
+        adapter.notifyDataSetChanged();
+    }
 
-        if (checked) {
-            chip.setChipBackgroundColor(ColorStateList.valueOf(colorPrimary));
-            chip.setTextColor(colorOnPrimary);
-            chip.setChipStrokeWidth(0f);
-        } else {
-            chip.setChipBackgroundColor(ColorStateList.valueOf(android.graphics.Color.TRANSPARENT)); // se ve el "pill" contenedor
-            chip.setTextColor(colorOnSurface);
-            chip.setChipStrokeWidth(0f);
-        }
+    // Ejemplos MOCK: reemplaza con datos reales (Firebase / API)
+    private List<Reserva> obtenerPendientes() {
+        List<Reserva> l = new ArrayList<>();
+        l.add(new Reserva("1", "Machu Picchu", "Cusco", "15 Nov 2025", "4.7", "CuscoTours SA", 2));
+        return l;
+    }
+
+    private List<Reserva> obtenerHistorial() {
+        List<Reserva> l = new ArrayList<>();
+        l.add(new Reserva("2", "Camino Inca", "Cusco", "10 Jul 2025", "4.6", "CuscoTours SA", 3));
+        return l;
     }
 }
