@@ -1,9 +1,12 @@
 package com.example.appventure.Superadmin;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appventure.R;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,25 +27,122 @@ public class LogsFragmentSuperadmin extends Fragment implements LogSuperladminAd
     private RecyclerView recyclerViewLogs;
     private LogSuperladminAdapter logAdapter;
     private List<LogSuperladmin> allLogs;
+    private List<LogSuperladmin> filteredLogs;
+    private ChipGroup chipGroupFilters;
+    private TextInputEditText searchEditText;
+    private LinearLayout emptyStateLayout;
+    private String currentFilter = "Todos";
+    private String currentSearchText = "";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_superadmin_logs, container, false);
         
+        initViews(view);
         setupRecyclerView(view);
+        setupFilters();
+        setupSearch();
         loadSampleData();
         
         return view;
     }
 
+    private void initViews(View view) {
+        chipGroupFilters = view.findViewById(R.id.chipGroupFilters);
+        searchEditText = view.findViewById(R.id.searchEditText);
+        emptyStateLayout = view.findViewById(R.id.emptyStateLayout);
+    }
+
     private void setupRecyclerView(View view) {
         recyclerViewLogs = view.findViewById(R.id.recyclerViewLogs);
         allLogs = new ArrayList<>();
+        filteredLogs = new ArrayList<>();
         
-        logAdapter = new LogSuperladminAdapter(allLogs, this);
+        logAdapter = new LogSuperladminAdapter(filteredLogs, this);
         recyclerViewLogs.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewLogs.setAdapter(logAdapter);
+    }
+
+    private void setupFilters() {
+        chipGroupFilters.setOnCheckedStateChangeListener((group, checkedIds) -> {
+            if (checkedIds.isEmpty()) {
+                currentFilter = "Todos";
+            } else {
+                int checkedId = checkedIds.get(0);
+                Chip checkedChip = chipGroupFilters.findViewById(checkedId);
+                if (checkedChip != null) {
+                    currentFilter = checkedChip.getText().toString();
+                }
+            }
+            applyFilters();
+        });
+    }
+
+    private void setupSearch() {
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                currentSearchText = s.toString().toLowerCase().trim();
+                applyFilters();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    private void applyFilters() {
+        filteredLogs.clear();
+        
+        for (LogSuperladmin log : allLogs) {
+            boolean matchesFilter = false;
+            boolean matchesSearch = false;
+            
+            // Filtro por prioridad
+            if (currentFilter.equals("Todos")) {
+                matchesFilter = true;
+            } else if (currentFilter.equals("Info") && log.getPrioridad().equals("INFO")) {
+                matchesFilter = true;
+            } else if (currentFilter.equals("Advertencia") && log.getPrioridad().equals("WARNING")) {
+                matchesFilter = true;
+            } else if (currentFilter.equals("Error") && log.getPrioridad().equals("ERROR")) {
+                matchesFilter = true;
+            } else if (currentFilter.equals("Crítico") && log.getPrioridad().equals("CRITICAL")) {
+                matchesFilter = true;
+            }
+            
+            // Filtro por búsqueda de texto
+            if (currentSearchText.isEmpty()) {
+                matchesSearch = true;
+            } else {
+                String searchIn = (log.getEvento() + " " + log.getDescripcion() + " " + 
+                                 log.getUsuario() + " " + log.getCategoria()).toLowerCase();
+                matchesSearch = searchIn.contains(currentSearchText);
+            }
+            
+            // Solo agregar si coincide con ambos filtros
+            if (matchesFilter && matchesSearch) {
+                filteredLogs.add(log);
+            }
+        }
+        
+        // Actualizar UI
+        logAdapter.updateLogList(filteredLogs);
+        updateEmptyState();
+    }
+
+    private void updateEmptyState() {
+        if (filteredLogs.isEmpty()) {
+            recyclerViewLogs.setVisibility(View.GONE);
+            emptyStateLayout.setVisibility(View.VISIBLE);
+        } else {
+            recyclerViewLogs.setVisibility(View.VISIBLE);
+            emptyStateLayout.setVisibility(View.GONE);
+        }
     }
 
     private void loadSampleData() {
@@ -126,7 +229,8 @@ public class LogsFragmentSuperadmin extends Fragment implements LogSuperladminAd
             "CRITICAL"
         ));
         
-        logAdapter.notifyDataSetChanged();
+        // Aplicar filtros iniciales
+        applyFilters();
     }
 
     @Override
