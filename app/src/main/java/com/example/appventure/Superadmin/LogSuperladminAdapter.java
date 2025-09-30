@@ -44,6 +44,11 @@ public class LogSuperladminAdapter extends RecyclerView.Adapter<LogSuperladminAd
         return logs.size();
     }
 
+    public void updateLogList(List<LogSuperladmin> newLogs) {
+        this.logs = newLogs;
+        notifyDataSetChanged();
+    }
+
     static class LogViewHolder extends RecyclerView.ViewHolder {
         private ImageView iconImageView;
         private TextView timestampTextView;

@@ -227,10 +227,10 @@ public class UserDetailActivity extends AppCompatActivity {
                     etUserEmail.setText(tvUserEmail.getText().toString());
                 }
                 
-                // Cambiar a ícono de cerrar (usar arrow_back como alternativa)
+                // Cambiar a ícono de cerrar/cancelar edición
                 if (btnEdit != null) {
                     try {
-                        btnEdit.setImageResource(R.drawable.ic_arrow_back);
+                        btnEdit.setImageResource(R.drawable.ic_close);
                     } catch (Exception e) {
                         // Si no existe el ícono, no hacer nada
                     }

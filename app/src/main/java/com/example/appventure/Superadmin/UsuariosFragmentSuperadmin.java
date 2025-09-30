@@ -283,8 +283,16 @@ public class UsuariosFragmentSuperadmin extends Fragment implements UserAdminAda
             
             // Pasar datos esenciales incluyendo fecha de registro
             intent.putExtra(UserDetailActivity.EXTRA_USER_ID, user.getId());
-            intent.putExtra(UserDetailActivity.EXTRA_USER_NOMBRES, user.getNombre());
-            intent.putExtra(UserDetailActivity.EXTRA_USER_APELLIDOS, ""); // Valor por defecto
+            
+            // Separar nombres y apellidos correctamente
+            String nombreCompleto = user.getNombre() != null ? user.getNombre() : "Usuario Sin Nombre";
+            String[] nombreArray = nombreCompleto.split(" ");
+            String nombres = nombreArray.length > 0 ? nombreArray[0] : "Sin Nombres";
+            String apellidos = nombreArray.length > 1 ? 
+                String.join(" ", java.util.Arrays.copyOfRange(nombreArray, 1, nombreArray.length)) : "Sin Apellidos";
+            
+            intent.putExtra(UserDetailActivity.EXTRA_USER_NOMBRES, nombres);
+            intent.putExtra(UserDetailActivity.EXTRA_USER_APELLIDOS, apellidos);
             intent.putExtra(UserDetailActivity.EXTRA_USER_DNI, "12345678"); // Valor por defecto
             intent.putExtra(UserDetailActivity.EXTRA_USER_EMAIL, user.getEmail());
             intent.putExtra(UserDetailActivity.EXTRA_USER_CELULAR, user.getTelefono());
