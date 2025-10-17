@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "682356289941",
+    "project_id": "appventure-ba3f6",
+    "storage_bucket": "appventure-ba3f6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682356289941:android:a685002b7b9d483dd8469c",
+        "android_client_info": {
+          "package_name": "com.example.appventure"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA74KTZD0LU9VqDeCC5miOsiQgP-tjq1Qw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

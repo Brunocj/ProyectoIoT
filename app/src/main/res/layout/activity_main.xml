@@ -12,9 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="24dp" />
 
-    <!-- Logo Container -->
-
-    <!-- Container Card -->
+    <!-- Logo y nombre -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +20,6 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Logo Circle -->
         <androidx.cardview.widget.CardView
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -37,10 +34,8 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_launcher_foreground" />
-
         </androidx.cardview.widget.CardView>
 
-        <!-- App Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,15 +44,15 @@
             android:textColor="@color/primary"
             android:textSize="24sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
+    <!-- Contenedor principal -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        android:layout_marginHorizontal="16dp">
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,9 +61,7 @@
             android:padding="32dp"
             android:gravity="center_horizontal">
 
-
-
-            <!-- Welcome Section -->
+            <!-- Texto de bienvenida -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,10 +84,9 @@
                     android:text="Ingresa tu cuenta"
                     android:textSize="14sp"
                     android:textColor="@color/text_secondary" />
-
             </LinearLayout>
 
-            <!-- Email Input Section -->
+            <!-- Campo de correo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,12 +125,10 @@
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
                         android:padding="16dp" />
-
                 </com.google.android.material.textfield.TextInputLayout>
-
             </LinearLayout>
 
-            <!-- Password Input Section -->
+            <!-- Campo de contraseña -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -178,14 +168,10 @@
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
                         android:padding="16dp" />
-
                 </com.google.android.material.textfield.TextInputLayout>
-
             </LinearLayout>
 
-            <!-- Forgot Password -->
-
-            <!-- Login Button -->
+            <!-- Enlace "Olvidaste tu contraseña" -->
             <TextView
                 android:id="@+id/textViewForgotPassword"
                 android:layout_width="wrap_content"
@@ -200,64 +186,27 @@
                 android:textColor="@color/teal_primary"
                 android:textSize="12sp" />
 
-            <!-- Register Link -->
+            <!-- Único botón de inicio de sesión -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="4dp"
-                android:elevation="2dp"
-                android:text="Iniciar sesión como Usuario"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:backgroundTint="@color/primary"
-                app:cornerRadius="12dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonLoginGuia"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:elevation="2dp"
-                android:text="Iniciar sesión como Guía"
+                android:text="Iniciar sesión"
                 android:textColor="@color/white"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/primary"
                 app:cornerRadius="12dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonLoginAdminEmpresa"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="8dp"
-                android:elevation="2dp"
-                android:text="Iniciar sesión como Admin de empresa"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:backgroundTint="@color/primary"
-                app:cornerRadius="12dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonLoginSuperadmin"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="8dp"
-                android:elevation="2dp"
-                android:text="Iniciar sesión como Superadmin"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:backgroundTint="@color/primary"
-                app:cornerRadius="12dp" />
-
+            <!-- Enlace para registro -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -278,11 +227,8 @@
                     android:focusable="true"
                     android:background="?android:attr/selectableItemBackground"
                     android:padding="4dp" />
-
             </LinearLayout>
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>

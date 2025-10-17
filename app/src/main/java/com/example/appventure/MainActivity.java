@@ -6,16 +6,25 @@ import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appventure.models.Usuario;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText editTextEmail, editTextPassword;
-    private MaterialButton btnLoginUsuario, btnLoginGuia, btnLoginAdmin, btnLoginSuperadmin;
+    private MaterialButton btnLogin;
     private TextView tvForgotPassword, tvRegister;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,78 +32,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // ==========================
-        //   Referencias
+        // Referencias UI
         // ==========================
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-
-        btnLoginUsuario = findViewById(R.id.buttonLogin);
-        btnLoginGuia = findViewById(R.id.buttonLoginGuia);
-        btnLoginAdmin = findViewById(R.id.buttonLoginAdminEmpresa);
-        btnLoginSuperadmin = findViewById(R.id.buttonLoginSuperadmin);
-
+        btnLogin = findViewById(R.id.buttonLogin);
         tvForgotPassword = findViewById(R.id.textViewForgotPassword);
         tvRegister = findViewById(R.id.textViewRegister);
 
         // ==========================
-        //   LOGIN USUARIO
+        // Firebase
         // ==========================
-        btnLoginUsuario.setOnClickListener(v -> {
-            if (validarCampos()) {
-                Toast.makeText(this, "Login como Usuario", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, BlankActivityUsuario.class);
-                startActivity(i);
-                finish();
-            }
-        });
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // ==========================
-        //   LOGIN GUÍA
+        // Login principal
         // ==========================
-        btnLoginGuia.setOnClickListener(v -> {
-            if (validarCampos()) {
-                Toast.makeText(this, "Login como Guía", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, BlankActivityGuia.class);
-                startActivity(i);
-                finish();
-            }
-        });
+        btnLogin.setOnClickListener(v -> login());
 
         // ==========================
-        //   LOGIN ADMIN EMPRESA
-        // ==========================
-        btnLoginAdmin.setOnClickListener(v -> {
-            if (validarCampos()) {
-                Toast.makeText(this, "Login como Admin de Empresa", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, BlankActivityAdminEmpresa.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        // ==========================
-        //   LOGIN SUPERADMIN
-        // ==========================
-        btnLoginSuperadmin.setOnClickListener(v -> {
-            if (validarCampos()) {
-                Toast.makeText(this, "Login como Superadmin", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, BlankActivitySuperadmin.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        // ==========================
-        //   OLVIDASTE CONTRASEÑA
+        // Otros botones
         // ==========================
         tvForgotPassword.setOnClickListener(v -> {
             Intent i = new Intent(this, ForgotPasswordActivity.class);
             startActivity(i);
         });
 
-        // ==========================
-        //   REGISTRO
-        // ==========================
         tvRegister.setOnClickListener(v -> {
             Intent i = new Intent(this, RegisterActivity.class);
             startActivity(i);
@@ -102,24 +66,75 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ==========================
-    //   VALIDACIÓN BÁSICA
+    // LOGIN
     // ==========================
-    private boolean validarCampos() {
+    private void login() {
         String email = editTextEmail.getText() != null ? editTextEmail.getText().toString().trim() : "";
         String pass = editTextPassword.getText() != null ? editTextPassword.getText().toString().trim() : "";
 
         if (TextUtils.isEmpty(email)) {
             editTextEmail.setError("Ingresa tu correo");
-            editTextEmail.requestFocus();
-            return false;
+            return;
         }
-
         if (TextUtils.isEmpty(pass)) {
             editTextPassword.setError("Ingresa tu contraseña");
-            editTextPassword.requestFocus();
-            return false;
+            return;
         }
 
-        return true;
+        Toast.makeText(this, "Verificando...", Toast.LENGTH_SHORT).show();
+
+        mAuth.signInWithEmailAndPassword(email, pass)
+                .addOnSuccessListener(authResult -> {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user == null) return;
+
+                    db.collection("usuarios").document(user.getUid()).get()
+                            .addOnSuccessListener(doc -> verificarRol(doc))
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(this, "Error leyendo Firestore: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    // ==========================
+    // VERIFICAR ROL AUTOMÁTICAMENTE
+    // ==========================
+    private void verificarRol(@NonNull DocumentSnapshot doc) {
+        if (!doc.exists()) {
+            Toast.makeText(this, "No se encontró el usuario en Firestore", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Usuario usuario = doc.toObject(Usuario.class);
+        if (usuario == null) {
+            Toast.makeText(this, "No se pudo obtener el usuario", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String rol = usuario.getRol();
+        Intent intent;
+
+        switch (rol.toLowerCase()) {
+            case "usuario":
+                intent = new Intent(this, BlankActivityUsuario.class);
+                break;
+            case "guia":
+                intent = new Intent(this, BlankActivityGuia.class);
+                break;
+            case "admin_empresa":
+                intent = new Intent(this, BlankActivityAdminEmpresa.class);
+                break;
+            case "superadmin":
+                intent = new Intent(this, BlankActivitySuperadmin.class);
+                break;
+            default:
+                Toast.makeText(this, "Rol desconocido", Toast.LENGTH_SHORT).show();
+                return;
+        }
+
+        intent.putExtra("nombreUsuario", usuario.getNombre());
+        startActivity(intent);
+        finish();
     }
 }
